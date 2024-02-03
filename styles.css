@@ -10,18 +10,16 @@ header{
     height: 70px;
     background: orange;
 }
-#home,
-#page2,
-#gallery{
-    height: 700px;
-}
 
 #home{
     background: black;
+    height: 700px;
 }
 #page2{
     background: yellow;
+    height: 700px;
 }
 #gallery{
     background: red;
+    height: 700px;
 }
