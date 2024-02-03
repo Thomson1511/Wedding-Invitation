@@ -1,25 +1,84 @@
 body{
     margin: 0;
-    background: green;
     text-align: center;
+    background-color: #fbc5b8;
 }
 html{
     scroll-behavior: smooth;
 }
 header{
-    height: 70px;
-    background: orange;
+    height: 60px;
+    text-align: end;
+    position:absolute;
 }
 
 #home{
-    background: black;
+    background-image: url('valami.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
     height: 700px;
+    text-align: center;
 }
+
+#homecenter{
+    position:relative;
+    top: 50%;
+    color: #D27F78;
+    font-size: 50px;
+}
+
 #page2{
-    background: yellow;
     height: 700px;
 }
 #gallery{
-    background: red;
     height: 700px;
+}
+
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    height: 70px;
+    width: 70vw;
+    min-width: 600px;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+a{
+    position: relative;
+    text-decoration: none;
+    font-family: 'Poppins',sans-serif;
+    color: #555555;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    padding: 20px 20px 0px 20px;
+}
+
+a:after{
+    content: "";
+    position: absolute;
+    background-color: #D27F78;
+    height: 3px;
+    width: 0;
+    left: 20%;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+a:hover{
+    color: #ffffff;
+}
+
+a:hover:after{
+    width: 60%;
+
 }
