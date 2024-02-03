@@ -3,3 +3,25 @@ body{
     background: green;
     text-align: center;
 }
+html{
+    scroll-behavior: smooth;
+}
+header{
+    height: 70px;
+    background: orange;
+}
+#home,
+#page2,
+#gallery{
+    height: 700px;
+}
+
+#home{
+    background: black;
+}
+#page2{
+    background: yellow;
+}
+#gallery{
+    background: red;
+}
