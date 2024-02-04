@@ -37,7 +37,7 @@
     #home{
         background-image: url('home-mobile.jpg');
         background-repeat: no-repeat;
-        background-size:cover;
+        background-size:contain;
         background-attachment: fixed;
         height: 100vh;
         text-align: center;
@@ -194,35 +194,8 @@
     
     .ringicon{
         margin-top: 2vw;
-    }    
-}
-
-
-body{
-    margin: 0;
-    text-align: center;
-    background-color: #fbc5b8;
-}
-html{
-    scroll-behavior: smooth;
-}
-
-#page2{
-    height: 700px;
-}
-#gallery{
-    height: 700px;
-}
-
-*,
-*:before,
-*:after {
-	margin: 0;
-	padding: 0;
-    box-sizing: border-box;
-}
-
-
+    }
+    
 a{
     position: relative;
     text-decoration: none;
@@ -252,4 +225,30 @@ a:hover{
 a:hover:after{
     width: 60%;
 
+}
+}
+
+
+body{
+    margin: 0;
+    text-align: center;
+    background-color: #fbc5b8;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+#page2{
+    height: 700px;
+}
+#gallery{
+    height: 700px;
+}
+
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+    box-sizing: border-box;
 }
