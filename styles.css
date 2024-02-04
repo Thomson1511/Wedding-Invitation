@@ -143,4 +143,7 @@ a:hover:after{
     width: 100%; /* Töltsük ki a szülőelem szélességét */
 }
 
-
+.timeframe{
+    border: dashed 2px white;
+    margin: 5px;
+}
