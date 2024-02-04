@@ -26,20 +26,28 @@
 
         <div class="launch-time">
             <div>
-                <p id="days">00</p>
-                <span>Days</span>
+                <div class="timeframe">
+                    <p id="days">00</p>
+                    <span>Days</span>
+                </div>
             </div>
             <div>
-                <p id="hours">00</p>
-                <span>Hours</span>
+                <div class="timeframe">
+                    <p id="hours">00</p>
+                    <span>Hours</span>
+                </div>
             </div>
             <div>
-                <p id="minutes">00</p>
-                <span>Minutes</span>
+                <div class="timeframe">
+                    <p id="minutes">00</p>
+                    <span>Minutes</span>
+                </div>
             </div>
             <div>
-                <p id="seconds">00</p>
-                <span>Seconds</span>
+                <div class="timeframe">
+                    <p id="seconds">00</p>
+                    <span>Seconds</span>
+                </div>
             </div>
         </div>
 
@@ -68,6 +76,27 @@
             document.getElementById("hours").innerHTML = hours;
             document.getElementById("minutes").innerHTML = minutes;
             document.getElementById("seconds").innerHTML = seconds;
+
+            if(distance < 0){
+                document.getElementById("days").innerHTML = 0;
+                document.getElementById("hours").innerHTML = 0;
+                document.getElementById("minutes").innerHTML = 0;
+                document.getElementById("seconds").innerHTML = 0;
+
+                // Számolja ki az eltelt időt az eredeti időpont és a jelenlegi idő között
+                var elapsedTime = now - countDownDate;
+                
+                var elapsedDays = Math.floor(Math.abs(elapsedTime) / (1000 * 60 * 60 * 24));
+                var elapsedHours = Math.floor((Math.abs(elapsedTime) % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var elapsedMinutes = Math.floor((Math.abs(elapsedTime) % (1000 * 60 * 60)) / (1000 * 60));
+                var elapsedSeconds = Math.floor((Math.abs(elapsedTime) % (1000 * 60)) / 1000);
+
+                // Kiírja az eltelt időt
+                document.getElementById("days").innerHTML = elapsedDays;
+                document.getElementById("hours").innerHTML = elapsedHours;
+                document.getElementById("minutes").innerHTML = elapsedMinutes;
+                document.getElementById("seconds").innerHTML = elapsedSeconds;
+            }
 
         }, 1000);
 
