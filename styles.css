@@ -7,6 +7,59 @@
     src: url(Diphylleia-Regular.ttf);
 }
 
+
+@media only screen and (max-width: 767px) {
+    .nav-container .hamburger {
+        display:inline;
+        background: red;
+        border: none;
+        border-radius: 50%;
+        padding: 1vw 1vw;
+        font-size: 4vw;
+        margin-top: 2vw;
+    }
+    .nav-container .links {
+        display: none;
+    }
+    header{
+        height: 60px;
+        text-align: end;
+        position:absolute;
+        width: 98vw;
+    }
+    nav{
+        height: 70px;
+        width: 98vw;
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
+    }
+}
+
+/* Nagyobb kijelzőkhöz (például számítógép monitorok) */
+@media only screen and (min-width: 768px) {
+    .nav-container .hamburger {
+        display: none;
+    }
+    .nav-container .links {
+        display:inline;
+    }
+    header{
+        height: 60px;
+        text-align: end;
+        position:absolute;
+        width: 90vw;
+    }
+    nav{
+        height: 70px;
+        width: 90vw;
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
+    }
+}
+
+
 body{
     margin: 0;
     text-align: center;
@@ -15,21 +68,7 @@ body{
 html{
     scroll-behavior: smooth;
 }
-header{
-    height: 60px;
-    text-align: end;
-    position:absolute;
-    width: 90vw;
-}
 
-
-nav{
-    height: 70px;
-    width: 90vw;
-    align-items: center;
-    justify-content: space-between;
-    margin: auto;
-}
 
 #home{
     background-image: url('valami2.jpg');
