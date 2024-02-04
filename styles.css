@@ -8,7 +8,107 @@
 }
 
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 420px) {
+    .nav-container .hamburger {
+        display:inline;
+        background: red;
+        border: none;
+        border-radius: 50%;
+        padding: 1vw 1vw;
+        font-size: 4vw;
+        margin-top: 5vw;
+    }
+    .nav-container .links {
+        display: none;
+    }
+    header{
+        height: 60px;
+        text-align: end;
+        position:absolute;
+        width: 95vw;
+    }
+    nav{
+        height: 70px;
+        width: 95vw;
+        align-items: center;
+        justify-content: space-between;
+        margin: auto;
+    }
+    #home{
+        background-image: url('iphone11-size.jpg');
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-attachment: fixed;
+        height: 100vh;
+        text-align: center;
+        padding-top: 60px;
+    }
+    #homecenter{
+        font-family: "Rochester", cursive;
+        font-weight: 400;
+        color: #D27F78;
+        font-size: 10vw;
+    }
+    .launch-time{
+        margin-top: 2vh;
+        display: flex;
+        justify-content: center;
+    }
+    .launch-time div{
+        flex-basis: 22vw;
+        font-family: Diphylleia;
+        color: white;
+        background: #D27F78;
+    }
+    .launch-time div p{
+        font-size: 10vw; /* Példa méret, állítsd be az igényeid szerint */
+        margin-bottom: -2.0vw; /* Példa margó, állítsd be az igényeid szerint */
+        width: 100%; /* Töltsük ki a szülőelem szélességét */
+    }
+    
+    .launch-time div span{
+        font-size: 4vw; /* Példa méret, állítsd be az igényeid szerint */
+        margin-bottom: -1.4vw; /* Példa margó, állítsd be az igényeid szerint */
+        width: 100%; /* Töltsük ki a szülőelem szélességét */
+    }
+    
+    .timeframe{
+        border: dashed 2px white;
+        margin: 5px;
+    }
+    .ring-container{
+        display: inline;
+        text-align: center;
+    }
+    
+    .ring{
+        height: 22vw;
+        width: 22vw;
+        background-color: #D27F78;
+        border-radius: 50%;
+        display: inline-block;
+        text-align: center;
+        padding-top: 0.5vw;
+        margin-top: 20vh;
+        margin-bottom: 2vh;
+    }
+    
+    .ring-circle{
+        display: inline-block;
+        height: 21vw;
+        width: 21vw;
+        border-radius: 50%;
+        border: dashed 2px white;
+    }
+    
+    .ringicon{
+        margin-top: 2vw;
+        width: 16vw;
+        height: 16vw;
+    }    
+}
+
+@media only screen and (min-width: 421px) and (max-width: 767px) {
     .nav-container .hamburger {
         display:inline;
         background: red;
