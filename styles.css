@@ -2,6 +2,11 @@
     font-family: Rochester;
     src: url(Rochester-Regular.ttf);
 }
+@font-face {
+    font-family: Diphylleia;
+    src: url(Diphylleia-Regular.ttf);
+}
+
 body{
     margin: 0;
     text-align: center;
@@ -14,6 +19,16 @@ header{
     height: 60px;
     text-align: end;
     position:absolute;
+    width: 90vw;
+}
+
+
+nav{
+    height: 70px;
+    width: 90vw;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
 }
 
 #home{
@@ -21,7 +36,7 @@ header{
     background-repeat: no-repeat;
     background-size:cover;
     background-attachment: fixed;
-    height: 700px;
+    height: 100vh;
     text-align: center;
     padding-top: 60px;
 }
@@ -30,7 +45,7 @@ header{
     font-family: "Rochester", cursive;
     font-weight: 400;
     color: #D27F78;
-    font-size: 50px;
+    font-size: 5vw;
 }
 
 #page2{
@@ -54,30 +69,25 @@ header{
 }
 
 .ring{
-    height: 150px;
-    width: 150px;
+    height: 13vw;
+    width: 13vw;
     background-color: #D27F78;
     border-radius: 50%;
-    padding-top: 5px;
-    padding-left: 5px;
     display: inline-block;
+    text-align: center;
+    padding-top: 0.5vw;
 }
 
 .ring-circle{
-    height: 140px;
-    width: 140px;
+    display: inline-block;
+    height: 12vw;
+    width: 12vw;
     border-radius: 50%;
     border: dashed 2px white;
-    padding-top: 13px;
 }
 
-nav{
-    height: 70px;
-    width: 70vw;
-    min-width: 600px;
-    align-items: center;
-    justify-content: space-between;
-    margin: auto;
+.ringicon{
+    margin-top: 2vw;
 }
 
 a{
@@ -113,11 +123,24 @@ a:hover:after{
 
 .launch-time{
     display: flex;
+    justify-content: center;
 }
 .launch-time div{
-    flex-basis: 100px;
+    flex-basis: 12vw;
+    font-family: Diphylleia;
+    color: white;
+    background: #D27F78;
 }
 .launch-time div p{
-    font-size: 60px;
-    margin-bottom: -14px;
+    font-size: 5vw; /* Példa méret, állítsd be az igényeid szerint */
+    margin-bottom: -2.0vw; /* Példa margó, állítsd be az igényeid szerint */
+    width: 100%; /* Töltsük ki a szülőelem szélességét */
 }
+
+.launch-time div span{
+    font-size: 2vw; /* Példa méret, állítsd be az igényeid szerint */
+    margin-bottom: -1.4vw; /* Példa margó, állítsd be az igényeid szerint */
+    width: 100%; /* Töltsük ki a szülőelem szélességét */
+}
+
+
