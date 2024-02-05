@@ -9,13 +9,16 @@
 
     <header>
         <nav class="nav-container">
-            <button class="hamburger">
+            <button id="hamburgerButton" class="hamburger">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="none" stroke="#555555" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 8h12M6 12h12M6 16h12"/></svg>
             </button>
             <div class="links">
-                <a href="#home">Home</a>
-                <a href="#page2">Page 2</a>
-                <a href="#gallery">Gallery</a>
+                <a href="#home" class="linkClose1">Home</a>
+                <a href="#page2" class="linkClose2">Page 2</a>
+                <a href="#gallery" class="linkClose3">Gallery</a>
+                <button class="closeMenu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="#555555" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg>
+                </button>
             </div>
         </nav>
     </header>
@@ -104,6 +107,72 @@
             }
 
         }, 1000);
+
+        document.addEventListener('DOMContentLoaded', function () {
+        var hamburgerButton = document.getElementById('hamburgerButton');
+        var navLinks = document.querySelector('.nav-container .links');
+        var closeMenuButton = document.querySelector('.closeMenu');
+        var linkClose1 = document.querySelector('.linkClose1');
+        var linkClose2 = document.querySelector('.linkClose2');
+        var linkClose3 = document.querySelector('.linkClose3');
+
+        hamburgerButton.addEventListener('click', function () {
+            // Toggle the visibility of the navigation links with animation
+            if (navLinks.style.display === 'none' || navLinks.style.display === '') {
+                navLinks.style.animation = 'slideDown 0.5s ease-in-out';
+                navLinks.style.display = 'flex';
+                //ide kerül a kinézete
+                navLinks.style.height = '25vh';
+                navLinks.style.position = 'fixed';
+                navLinks.style.top = '0';
+                navLinks.style.right = '0';
+                navLinks.style.left = '0';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.justifyContent = 'center';
+                navLinks.style.alignItems = 'center';
+                navLinks.style.background = '#000';
+                //
+            } else {
+                navLinks.style.animation = 'slideUp 0.5s ease-in-out';
+                setTimeout(() => {
+                    navLinks.style.display = 'none';
+                }, 500);
+            }
+        });
+
+        closeMenuButton.addEventListener('click', function () {
+            // Close the menu with animation
+            navLinks.style.animation = 'slideUp 0.5s ease-in-out';
+            setTimeout(() => {
+                navLinks.style.display = 'none';
+            }, 500);
+        });
+
+        linkClose1.addEventListener('click', function () {
+            // Close the menu with animation
+            navLinks.style.animation = 'slideUp 0.5s ease-in-out';
+            setTimeout(() => {
+                navLinks.style.display = 'none';
+            }, 500);
+        });
+
+        linkClose2.addEventListener('click', function () {
+            // Close the menu with animation
+            navLinks.style.animation = 'slideUp 0.5s ease-in-out';
+            setTimeout(() => {
+                navLinks.style.display = 'none';
+            }, 500);
+        });
+
+        linkClose3.addEventListener('click', function () {
+            // Close the menu with animation
+            navLinks.style.animation = 'slideUp 0.5s ease-in-out';
+            setTimeout(() => {
+                navLinks.style.display = 'none';
+            }, 500);
+        });
+
+    });
 
     </script>
 

@@ -7,6 +7,23 @@
     src: url(Diphylleia-Regular.ttf);
 }
 
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
+}
 
 @media only screen and (max-width: 420px) {
     .nav-container .hamburger {
@@ -20,6 +37,7 @@
     }
     .nav-container .links {
         display: none;
+        animation: none;
     }
     header{
         height: 60px;
@@ -105,7 +123,20 @@
         margin-top: 2vw;
         width: 16vw;
         height: 16vw;
-    }    
+    }
+    a{
+        display: inline-block;
+        padding: 15px;
+        text-decoration: none;
+        text-transform: uppercase;
+        color: #fff;
+        font-size: 1.0rem;
+        background: #D27F78;
+        width: 60vw;
+        text-align: center;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
 }
 
 @media only screen and (min-width: 421px) and (max-width: 767px) {
