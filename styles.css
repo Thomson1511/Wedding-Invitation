@@ -85,7 +85,7 @@
     }
     
     .launch-time div span{
-        font-size: 4vw; /* Példa méret, állítsd be az igényeid szerint */
+        font-size: 3vw; /* Példa méret, állítsd be az igényeid szerint */
         margin-bottom: -1.4vw; /* Példa margó, állítsd be az igényeid szerint */
         width: 100%; /* Töltsük ki a szülőelem szélességét */
     }
