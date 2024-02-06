@@ -62,6 +62,25 @@
     
     <section id="page2">
         <h1>Page 2</h1>
+        <div class="glass" id="map">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d35811.87208659671!2d19.748930986894894!3d48.15394636670949!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47400dd0698005a5%3A0x6c41b392cb1e9751!2zS2FyYW5jc2xhcHVqdMWRaSBSZW5kZXp2w6lueWjDoXo!5e0!3m2!1shu!2shu!4v1707241659737!5m2!1shu!2shu" 
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <h1>Térkép</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, 
+                consectetur quaerat fugiat sed praesentium, voluptates saepe laudantium facere odit quod adipisci perspiciatis enim asperiores, 
+                placeat incidunt modi eum non deleniti?</p>
+        </div>
+        <div class="glass" id="map">
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d101516.19537447527!2d19.738561053117564!3d48.03990407191131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47410703dea53ab5%3A0x803ac26a7b4fb7c6!2sNagyboldogasszony-bazilika!5e0!3m2!1shu!2shu!4v1707242263779!5m2!1shu!2shu" 
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <h1>Térkép</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, 
+                consectetur quaerat fugiat sed praesentium, voluptates saepe laudantium facere odit quod adipisci perspiciatis enim asperiores, 
+                placeat incidunt modi eum non deleniti?</p>
+        </div>
+
     </section>
     
     <section id="gallery">
@@ -186,8 +205,20 @@
     });
 
     });
-    </script>
 
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 4,
+            center: { lat: -33, lng: 151 },
+            disableDefaultUI: true,
+        });
+    }
+
+window.initMap = initMap;
+
+
+    </script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>-->
 
 </body>
 </html>
