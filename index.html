@@ -19,6 +19,8 @@
             </div>
         </nav>
     </header>
+
+
     <section id="home">
         <div class="ring-container">
             <div class="ring">
@@ -112,6 +114,15 @@
         var linkClose2 = document.querySelector('.linkClose2');
         var linkClose3 = document.querySelector('.linkClose3');
 
+        function closeMenu() {
+        // Close the menu with animation
+        navLinks.style.animation = 'slideUp 0.5s ease-in-out';
+        hamburgerButton.style.display = 'inline';
+        setTimeout(() => {
+            navLinks.style.display = 'none';
+        }, 500);
+        }
+
         hamburgerButton.addEventListener('click', function () {
             // Toggle the visibility of the navigation links with animation
             if (navLinks.style.display === 'none' || navLinks.style.display === '') {
@@ -130,39 +141,20 @@
                 //
                 hamburgerButton.style.display = 'none';
             } else {
-                navLinks.style.animation = 'slideUp 0.5s ease-in-out';
-                setTimeout(() => {
-                    navLinks.style.display = 'none';
-                }, 500);
+                closeMenu();
             }
         });
 
-        linkClose1.addEventListener('click', function () {
-            // Close the menu with animation
-            navLinks.style.animation = 'slideUp 0.5s ease-in-out';
-            hamburgerButton.style.display = 'inline';
-            setTimeout(() => {
-                navLinks.style.display = 'none';
-            }, 500);
-        });
+    linkClose1.addEventListener('click', closeMenu);
+    linkClose2.addEventListener('click', closeMenu);
+    linkClose3.addEventListener('click', closeMenu);
 
-        linkClose2.addEventListener('click', function () {
-            // Close the menu with animation
-            navLinks.style.animation = 'slideUp 0.5s ease-in-out';
-            hamburgerButton.style.display = 'inline';
-            setTimeout(() => {
-                navLinks.style.display = 'none';
-            }, 500);
-        });
-
-        linkClose3.addEventListener('click', function () {
-            // Close the menu with animation
-            navLinks.style.animation = 'slideUp 0.5s ease-in-out';
-            hamburgerButton.style.display = 'inline';
-            setTimeout(() => {
-                navLinks.style.display = 'none';
-            }, 500);
-        });
+    document.addEventListener('click', function (event) {
+        var isClickInside = navLinks.contains(event.target) || hamburgerButton.contains(event.target);
+        if (!isClickInside) {
+            closeMenu();
+        }
+    });
 
     });
 
