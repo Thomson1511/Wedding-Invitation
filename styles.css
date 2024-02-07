@@ -374,7 +374,7 @@ html{
 }
 
 #page2{
-    height: 700px;
+    height: 100vh;
 }
 #gallery{
     height: 700px;
@@ -401,4 +401,21 @@ html{
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     display: inline-block;
+}
+
+.map-container{
+    margin: 50px;
+    width:400px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+}
+
+.map{
+    position: absolute;
+    width: 600px;
+    height: 700px;
+    top: -150px;
+    left: -100px;
 }
