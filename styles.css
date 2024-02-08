@@ -146,7 +146,7 @@
 .glass{
     width: 78vw;
     height: 90vw;
-    margin: 10vw;
+    margin: 5vw 10vw;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -602,6 +602,8 @@ a:hover:after{
     left: -6vw;
 }
 
+
+
 }
 
 
@@ -629,4 +631,6 @@ html{
     box-sizing: border-box;
 }
 
-/*Glass div számítógéphez*/
+.location{
+    margin-top: 3vw;
+}
