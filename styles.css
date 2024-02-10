@@ -59,7 +59,7 @@
     #home{
         background-image: url('iphone11-size.jpg');
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: cover;
         background-attachment: fixed;
         height: 100vh;
         text-align: center;
