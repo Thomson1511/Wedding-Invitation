@@ -210,14 +210,14 @@
 
     document.getElementById('homeStilusok').addEventListener('click', function() {
   var homeStyles = window.getComputedStyle(document.getElementById('home'));
-  console.log("Home elem stílusai:");
-  console.log("Background image: " + homeStyles.backgroundImage);
-  console.log("background Repeat: " + homeStyles.backgroundRepeat);
-  console.log("Background Size: " + homeStyles.backgroundSize);
-  console.log("Background Attachment: " + homeStyles.backgroundAttachment);
-  console.log("Height: " + homeStyles.height);
-  console.log("Text Align: " + homeStyles.textAlign);
-  console.log("Padding Top: " + homeStyles.paddingTop);
+  alert("Home elem stílusai:\n" +
+    "Background image: " + homeStyles.backgroundImage + "\n" +
+    "Background Repeat: " + homeStyles.backgroundRepeat + "\n" +
+    "Background Size: " + homeStyles.backgroundSize + "\n" +
+    "Background Attachment: " + homeStyles.backgroundAttachment + "\n" +
+    "Height: " + homeStyles.height + "\n" +
+    "Text Align: " + homeStyles.textAlign + "\n" +
+    "Padding Top: " + homeStyles.paddingTop);
 });
 
     </script>
