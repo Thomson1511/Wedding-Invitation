@@ -13,9 +13,9 @@
                 <img src="assets/icons/hamburger.svg" alt="">
             </button>
             <div class="links">
-                <a href="#home" class="linkClose1">Vissza</a>
-                <a href="#page2" class="linkClose2">Helyszín</a>
-                <a href="#gallery" class="linkClose3">Galéria</a>
+                <a href="#home" class="linkNav" id="linkClose1">Vissza</a>
+                <a href="#page2" class="linkNav" id="linkClose2">Helyszín</a>
+                <a href="#gallery" class="linkNav" id="linkClose3">Galéria</a>
             </div>
         </nav>
     </header>
@@ -66,16 +66,18 @@
             <div class="wedding-location">
                 <img src="assets/images/rendezvenyhaz.jpg" alt="" class="location-image">
             </div>
-            <h1 class="descLocation">Vendégvárás:</h1>
-            <p>14:00-tól</p>
+            <h3 class="descLocation">Vendégvárás: 14:00-tól</h3>
+            <p>Karancslapujtő, Rákóczi út 166, 3182</p>
+            <a href="https://www.google.com/maps/place/Karancslapujt%C5%91i+Rendezv%C3%A9nyh%C3%A1z/@48.1297228,19.6536624,11.56z/data=!4m6!3m5!1s0x47400dd0698005a5:0x6c41b392cb1e9751!8m2!3d48.1472096!4d19.745577!16s%2Fg%2F11jm6_n2xs?hl=hu&entry=ttu" target="_blank" class="linkLoc">Útvonal</a>
         </div>
         <div class="glass">
 
             <div class="wedding-location">
                 <img src="assets/images/szentkutTemplom.jpg" alt="" class="location-image">
             </div>
-            <h1 class="descLocation">Templomi szertartás:</h1>
-            <p>16:00-kor</p>
+            <h3 class="descLocation">Templomi szertartás: 16:00-kor</h3>
+            <p>Mátraverebély, Dózsa György út 63, 3077</p>
+            <a href="https://www.google.com/maps/place/Nagyboldogasszony-bazilika/@48.0382091,19.5299615,10.92z/data=!4m6!3m5!1s0x47410703dea53ab5:0x803ac26a7b4fb7c6!8m2!3d48.000051!4d19.761423!16s%2Fg%2F1224br_3?hl=hu&entry=ttu" target="_blank" class="linkLoc">Útvonal</a>
         </div>
 
     </section>
@@ -126,9 +128,9 @@
         document.addEventListener('DOMContentLoaded', function () {
         var hamburgerButton = document.getElementById('hamburgerButton');
         var navLinks = document.querySelector('.nav-container .links');
-        var linkClose1 = document.querySelector('.linkClose1');
-        var linkClose2 = document.querySelector('.linkClose2');
-        var linkClose3 = document.querySelector('.linkClose3');
+        var linkClose1 = document.getElementById('linkClose1');
+        var linkClose2 = document.getElementById('linkClose2');
+        var linkClose3 = document.getElementById('linkClose3');
 
         hamburgerButton.addEventListener('click', function () {
             // Toggle the visibility of the navigation links with animation
