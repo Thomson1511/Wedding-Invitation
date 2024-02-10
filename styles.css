@@ -1,10 +1,10 @@
 @font-face {
     font-family: Rochester;
-    src: url(Rochester-Regular.ttf);
+    src: url(assets/fonts/Rochester-Regular.ttf);
 }
 @font-face {
     font-family: Diphylleia;
-    src: url(Diphylleia-Regular.ttf);
+    src: url(assets/fonts/Diphylleia-Regular.ttf);
 }
 
 @keyframes slideDown {
@@ -57,7 +57,7 @@
         margin: auto;
     }
     #home{
-        background-image: url('iphone11-size.jpg');
+        background-image: url('assets/images/iphone11-size.jpg');
         background-repeat: no-repeat;
         background-size: contain;
         background-attachment: fixed;
@@ -190,7 +190,7 @@
         margin: auto;
     }
     #home{
-        background-image: url('Tablet-Home.jpg');
+        background-image: url('assets/images/Tablet-Home.jpg');
         background-repeat: no-repeat;
         background-size:contain;
         background-attachment: fixed;
@@ -313,7 +313,7 @@
         margin: auto;
     }
     #home{
-        background-image: url('valami2.jpg');
+        background-image: url('assets/images/valami2.jpg');
         background-repeat: no-repeat;
         background-size:cover;
         background-attachment: fixed;
