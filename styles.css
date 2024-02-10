@@ -7,6 +7,11 @@
     src: url(assets/fonts/Diphylleia-Regular.ttf);
 }
 
+@font-face {
+    font-family: Rubik;
+    src: url(assets/fonts/Rubik-VariableFont.ttf);
+}
+
 @keyframes slideDown {
     from {
         transform: translateY(-100%);
@@ -23,6 +28,16 @@
     to {
         transform: translateY(-100%);
     }
+}
+
+.descLocation{
+    display: inline-flex;
+    font-family: Rubik;
+}
+
+.descLocationTime{
+    display: inline-flex;
+    font-family: Rubik;
 }
 
 /* #region alap stílus */
@@ -136,6 +151,7 @@ html{
     box-sizing: border-box;
 }
 
+
 /*#endregion*/
 
 @media only screen and (max-width: 767px) {
@@ -204,7 +220,7 @@ html{
         width: 16vw;
         height: 16vw;
     }
-    a{
+    .linkNav{
         display: inline-block;
         padding: 15px;
         text-decoration: none;
@@ -309,7 +325,7 @@ html{
         height: 16vw;
     }
 
-    a{
+    .linkNav{
         display: inline-block;
         padding: 15px;
         text-decoration: none;
@@ -395,7 +411,7 @@ html{
         height: 8vw;
     }
     
-a{
+.linkNav{
     position: relative;
     text-decoration: none;
     font-family: 'Poppins',sans-serif;
