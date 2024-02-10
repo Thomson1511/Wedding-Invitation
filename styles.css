@@ -156,22 +156,6 @@
     display: inline-block;
 }
 
-.map-container{
-    margin: 6vw 9vw 3vw 9vw;
-    width: 60vw ;
-    height: 60vw;
-    overflow: hidden;
-    position: relative;
-    border-radius: 20px;
-}
-
-.map{
-    position: absolute;
-    width: 92vw;
-    height: 92vw;
-    top: -16vw;
-    left: -15vw;
-}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -305,22 +289,7 @@
     display: inline-block;
 }
 
-.map-container{
-    margin: 2vw 3vw 1vw 3vw;
-    width: 20vw ;
-    height: 20vw;
-    overflow: hidden;
-    position: relative;
-    border-radius: 20px;
-}
 
-.map{
-    position: absolute;
-    width: 32vw;
-    height: 37vw;
-    top: -8vw;
-    left: -6vw;
-}  
 }
 
 @media only screen and (min-width: 1024px) {
@@ -409,6 +378,8 @@
     
     .ringicon{
         margin-top: 2vw;
+        width: 8vw;
+        height: 8vw;
     }
     
 a{
@@ -456,22 +427,6 @@ a:hover:after{
     display: inline-block;
 }
 
-.map-container{
-    margin: 2vw 3vw 1vw 3vw;
-    width: 20vw ;
-    height: 20vw;
-    overflow: hidden;
-    position: relative;
-    border-radius: 20px;
-}
-
-.map{
-    position: absolute;
-    width: 32vw;
-    height: 37vw;
-    top: -8vw;
-    left: -6vw;
-}
 
 
 
@@ -504,4 +459,14 @@ html{
 
 .location{
     margin-top: 3vw;
+}
+
+.wedding-location{
+    width: 22vw;
+    margin: 2vw;
+}
+
+.location-image{
+    width: 22vw;
+    border-radius: 20px;
 }
