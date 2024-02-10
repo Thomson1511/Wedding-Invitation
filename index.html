@@ -58,6 +58,8 @@
             </div>
         </div>
 
+        <button id="homeStilusok">Ellenőrizd</button>
+
     </section>
     
     <section id="page2">
@@ -205,6 +207,18 @@
     });
 
     });
+
+    document.getElementById('homeStilusok').addEventListener('click', function() {
+  var homeStyles = window.getComputedStyle(document.getElementById('home'));
+  console.log("Home elem stílusai:");
+  console.log("Background image: " + homeStyles.backgroundImage);
+  console.log("background Repeat: " + homeStyles.backgroundRepeat);
+  console.log("Background Size: " + homeStyles.backgroundSize);
+  console.log("Background Attachment: " + homeStyles.backgroundAttachment);
+  console.log("Height: " + homeStyles.height);
+  console.log("Text Align: " + homeStyles.textAlign);
+  console.log("Padding Top: " + homeStyles.paddingTop);
+});
 
     </script>
 
