@@ -222,6 +222,21 @@ html{
     margin: 5vw 10vw;
 }
 
+.location{
+    margin-top: 3vw;
+}
+
+.wedding-location{
+    width: 66vw;
+    margin: 6vw;
+}
+
+.location-image{
+    width: 66vw;
+    border-radius: 20px;
+}
+
+
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -303,11 +318,24 @@ html{
     }
     
 .glass{
-    width: 26vw;
-    height: 30vw;
+    width: 52vw;
+    height: 60vw;
     margin: 3vw;
 }
 
+.location{
+    margin-top: 3vw;
+}
+
+.wedding-location{
+    width: 44vw;
+    margin: 4vw;
+}
+
+.location-image{
+    width: 44vw;
+    border-radius: 20px;
+}
 
 }
 
@@ -397,8 +425,6 @@ a:hover:after{
     margin: 3vw;
 }
 
-}
-
 .location{
     margin-top: 3vw;
 }
@@ -411,4 +437,5 @@ a:hover:after{
 .location-image{
     width: 22vw;
     border-radius: 20px;
+}
 }
