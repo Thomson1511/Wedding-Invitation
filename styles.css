@@ -192,6 +192,9 @@ html{
     }
     
     .ring-circle{
+        margin: 1px;
+        height: 20vw;
+        width: 20vw;
         display: inline-block;
         border-radius: 50%;
         border: dashed 2px white;
@@ -293,6 +296,9 @@ html{
     }
     
     .ring-circle{
+        margin: 0.5vw;
+        height: 20vw;
+        width: 20vw;
         display: inline-block;
         border-radius: 50%;
         border: dashed 2px white;
@@ -377,6 +383,8 @@ html{
     }
     
     .ring-circle{
+        height: 12vw;
+        width: 12vw;
         display: inline-block;
         border-radius: 50%;
         border: dashed 2px white;
