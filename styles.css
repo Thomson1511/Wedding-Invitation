@@ -25,6 +25,119 @@
     }
 }
 
+/* #region alap stílus */
+header{
+    height: 60px;
+    text-align: end;
+    position:absolute;
+}
+
+nav{
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
+}
+
+#home{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    text-align: center;
+    padding-top: 60px;
+}
+
+#homecenter{
+    font-family: "Rochester", cursive;
+    font-weight: 400;
+    color: #D27F78;
+}
+
+.launch-time{
+    display: flex;
+    justify-content: center;
+}
+
+.launch-time div{
+    font-family: Diphylleia;
+    color: white;
+    background: #D27F78;
+}
+
+.launch-time div p{
+    margin-bottom: -2.0vw; 
+    width: 100%; 
+}
+
+.launch-time div span{
+    margin-bottom: -1.4vw; 
+    width: 100%; 
+}
+
+.timeframe{
+    border: dashed 2px white;
+    margin: 5px;
+}
+
+.ring-container{
+    display: inline;
+    text-align: center;
+}
+
+.ring{
+    background-color: #D27F78;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    padding-top: 0.5vw;
+}
+
+.ring-circle{
+    display: inline-block;
+    border-radius: 50%;
+    border: dashed 2px white;
+}
+
+.ringicon{
+    margin-top: 2vw;
+}
+
+.glass{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    display: inline-block;
+}
+
+body{
+    margin: 0;
+    text-align: center;
+    background-color: #fbc5b8;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+#page2{
+    height: 100vh;
+}
+#gallery{
+    height: 100vh;
+}
+
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+    box-sizing: border-box;
+}
+
+/*#endregion*/
+
 @media only screen and (max-width: 767px) {
     .nav-container .hamburger {
         display: inline;
@@ -44,87 +157,47 @@
         animation: none;
     }
     header{
-        height: 60px;
-        text-align: end;
-        position:absolute;
         width: 95vw;
     }
     nav{
-        height: 70px;
         width: 95vw;
-        align-items: center;
-        justify-content: space-between;
-        margin: auto;
     }
     #home{
         background-image: url('assets/images/iphone11-size.jpg');
-        background-repeat: no-repeat;
         background-size: contain;
-        background-attachment: fixed;
-        height: 100vh;
-        text-align: center;
-        padding-top: 60px;
     }
     #homecenter{
-        font-family: "Rochester", cursive;
-        font-weight: 400;
-        color: #D27F78;
         font-size: 10vw;
     }
     .launch-time{
         margin-top: 2vh;
-        display: flex;
-        justify-content: center;
     }
     .launch-time div{
         flex-basis: 22vw;
-        font-family: Diphylleia;
-        color: white;
-        background: #D27F78;
     }
     .launch-time div p{
         font-size: 10vw; 
-        margin-bottom: -2.0vw; 
-        width: 100%; 
     }
     
     .launch-time div span{
-        font-size: 3vw; 
         margin-bottom: -1.4vw; 
         width: 100%; 
-    }
-    
-    .timeframe{
-        border: dashed 2px white;
-        margin: 5px;
-    }
-    .ring-container{
-        display: inline;
-        text-align: center;
     }
     
     .ring{
         height: 22vw;
         width: 22vw;
-        background-color: #D27F78;
-        border-radius: 50%;
-        display: inline-block;
-        text-align: center;
-        padding-top: 0.5vw;
         margin-top: 20vh;
         margin-bottom: 2vh;
     }
     
     .ring-circle{
         display: inline-block;
-        height: 21vw;
-        width: 21vw;
         border-radius: 50%;
         border: dashed 2px white;
     }
     
     .ringicon{
-        margin-top: 2vw;
         width: 16vw;
         height: 16vw;
     }
@@ -147,13 +220,6 @@
     width: 78vw;
     height: 90vw;
     margin: 5vw 10vw;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    display: inline-block;
 }
 
 }
@@ -177,87 +243,47 @@
         animation: none;
     }
     header{
-        height: 60px;
-        text-align: end;
-        position:absolute;
         width: 95vw;
     }
     nav{
-        height: 70px;
         width: 95vw;
-        align-items: center;
-        justify-content: space-between;
-        margin: auto;
     }
     #home{
         background-image: url('assets/images/Tablet-Home.jpg');
-        background-repeat: no-repeat;
         background-size:contain;
-        background-attachment: fixed;
-        height: 100vh;
-        text-align: center;
-        padding-top: 60px;
     }
     #homecenter{
-        font-family: "Rochester", cursive;
-        font-weight: 400;
-        color: #D27F78;
         font-size: 10vw;
     }
     .launch-time{
         margin-top: 2vh;
-        display: flex;
-        justify-content: center;
     }
     .launch-time div{
         flex-basis: 22vw;
-        font-family: Diphylleia;
-        color: white;
-        background: #D27F78;
     }
     .launch-time div p{
-        font-size: 10vw; 
-        margin-bottom: -2.0vw; 
-        width: 100%; 
+        font-size: 10vw;
     }
     
     .launch-time div span{
-        font-size: 4vw; 
         margin-bottom: -1.4vw; 
         width: 100%; 
-    }
-    
-    .timeframe{
-        border: dashed 2px white;
-        margin: 5px;
-    }
-    .ring-container{
-        display: inline;
-        text-align: center;
     }
     
     .ring{
         height: 22vw;
         width: 22vw;
-        background-color: #D27F78;
-        border-radius: 50%;
-        display: inline-block;
-        text-align: center;
-        padding-top: 0.5vw;
         margin-top: 20vh;
         margin-bottom: 2vh;
     }
     
     .ring-circle{
         display: inline-block;
-        height: 21vw;
-        width: 21vw;
         border-radius: 50%;
         border: dashed 2px white;
     }
     
     .ringicon{
-        margin-top: 2vw;
         width: 16vw;
         height: 16vw;
     }
@@ -280,13 +306,6 @@
     width: 26vw;
     height: 30vw;
     margin: 3vw;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    display: inline-block;
 }
 
 
@@ -300,84 +319,43 @@
         display:inline;
     }
     header{
-        height: 60px;
-        text-align: end;
-        position:absolute;
         width: 90vw;
     }
     nav{
-        height: 70px;
         width: 90vw;
-        align-items: center;
-        justify-content: space-between;
-        margin: auto;
     }
     #home{
         background-image: url('assets/images/valami2.jpg');
-        background-repeat: no-repeat;
         background-size:cover;
-        background-attachment: fixed;
-        height: 100vh;
-        text-align: center;
-        padding-top: 60px;
     }
     #homecenter{
-        font-family: "Rochester", cursive;
-        font-weight: 400;
-        color: #D27F78;
         font-size: 5vw;
     }
-    .launch-time{
-        display: flex;
-        justify-content: center;
-    }
+
     .launch-time div{
         flex-basis: 12vw;
-        font-family: Diphylleia;
-        color: white;
-        background: #D27F78;
     }
     .launch-time div p{
-        font-size: 5vw; 
-        margin-bottom: -2.0vw; 
-        width: 100%; 
+        font-size: 5vw;
     }
     
-    .launch-time div span{
-        font-size: 2vw; 
+    .launch-time div span{ 
         margin-bottom: -1.4vw; 
         width: 100%; 
-    }
-    
-    .timeframe{
-        border: dashed 2px white;
-        margin: 5px;
-    }
-    .ring-container{
-        display: inline;
-        text-align: center;
     }
     
     .ring{
         height: 13vw;
         width: 13vw;
-        background-color: #D27F78;
-        border-radius: 50%;
-        display: inline-block;
-        text-align: center;
-        padding-top: 0.5vw;
     }
     
     .ring-circle{
         display: inline-block;
-        height: 12vw;
-        width: 12vw;
         border-radius: 50%;
         border: dashed 2px white;
     }
     
     .ringicon{
-        margin-top: 2vw;
         width: 8vw;
         height: 8vw;
     }
@@ -418,43 +396,8 @@ a:hover:after{
     width: 26vw;
     height: 30vw;
     margin: 3vw;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    display: inline-block;
 }
 
-
-
-
-}
-
-
-body{
-    margin: 0;
-    text-align: center;
-    background-color: #fbc5b8;
-}
-html{
-    scroll-behavior: smooth;
-}
-
-#page2{
-    height: 100vh;
-}
-#gallery{
-    height: 700px;
-}
-
-*,
-*:before,
-*:after {
-	margin: 0;
-	padding: 0;
-    box-sizing: border-box;
 }
 
 .location{
