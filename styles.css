@@ -125,7 +125,10 @@ html{
     height: 100vh;
 }
 #gallery{
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 150vh;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
 *,
