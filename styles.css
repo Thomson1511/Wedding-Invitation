@@ -59,7 +59,7 @@
     #home{
         background-image: url('iphone11-size.jpg');
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         background-attachment: fixed;
         height: 100vh;
         text-align: center;
@@ -208,7 +208,7 @@
     #home{
         background-image: url('Tablet-Home.jpg');
         background-repeat: no-repeat;
-        background-size:cover;
+        background-size:contain;
         background-attachment: fixed;
         height: 100vh;
         text-align: center;
