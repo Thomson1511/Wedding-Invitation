@@ -340,8 +340,7 @@ html{
     }
     
     .launch-time div span{ 
-        margin-bottom: -1.4vw; 
-        width: 100%; 
+        font-size: 2vw;
     }
     
     .ring{
