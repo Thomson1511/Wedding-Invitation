@@ -30,15 +30,8 @@
     }
 }
 
-.descLocation{
-    display: inline-flex;
-    font-family: Rubik;
-}
 
-.descLocationTime{
-    display: inline-flex;
-    font-family: Rubik;
-}
+
 
 /* #region alap stílus */
 header{
@@ -151,6 +144,10 @@ html{
     box-sizing: border-box;
 }
 
+.descLocation{
+    display: inline-flex;
+    font-family: Rubik;
+}
 
 /*#endregion*/
 
@@ -422,7 +419,7 @@ html{
     padding: 20px 20px 0px 20px;
 }
 
-a:after{
+.linkNav:after{
     content: "";
     position: absolute;
     background-color: #D27F78;
@@ -433,11 +430,11 @@ a:after{
     transition: 0.3s;
 }
 
-a:hover{
+.linkNav:hover{
     color: #ffffff;
 }
 
-a:hover:after{
+.linkNav:hover:after{
     width: 60%;
 
 }
