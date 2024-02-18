@@ -191,3 +191,20 @@ thumbnails.forEach((thumbnail, index) =>{
         showSlider();
     })
 })
+
+document.addEventListener('DOMContentLoaded', function () {
+    var photoUs = document.querySelector('.photoUs img');
+    var currentImage = 1; // Kezdetben a Left-1 van megjelenítve
+
+    function toggleImage() {
+        if (currentImage === 1) {
+            photoUs.src = "assets/images/AboutUs/Left-2.jpg";
+            currentImage = 2;
+        } else {
+            photoUs.src = "assets/images/AboutUs/Left-1.jpg";
+            currentImage = 1;
+        }
+    }
+
+    setInterval(toggleImage, 5000); // 5000 ms = 5 másodperc
+});
