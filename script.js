@@ -42,6 +42,7 @@ var navLinks = document.querySelector('.nav-container .links');
 var linkClose1 = document.getElementById('linkClose1');
 var linkClose2 = document.getElementById('linkClose2');
 var linkClose3 = document.getElementById('linkClose3');
+var linkClose4 = document.getElementById('linkClose4');
 
 hamburgerButton.addEventListener('click', function () {
     // Toggle the visibility of the navigation links with animation
@@ -91,6 +92,17 @@ linkClose2.addEventListener('click', function () {
 });
 
 linkClose3.addEventListener('click', function () {
+    // Close the menu with animation
+    var isMobileDevice = window.matchMedia("(max-width: 1023px)").matches;
+    if (isMobileDevice){
+    navLinks.style.animation = 'slideUp 0.5s ease-in-out';
+    hamburgerButton.style.display = 'inline';
+    setTimeout(() => {
+        navLinks.style.display = 'none';
+    }, 500);}
+});
+
+linkClose4.addEventListener('click', function () {
     // Close the menu with animation
     var isMobileDevice = window.matchMedia("(max-width: 1023px)").matches;
     if (isMobileDevice){

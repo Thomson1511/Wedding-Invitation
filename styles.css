@@ -1,3 +1,5 @@
+/* #region fonts */
+
 @font-face {
     font-family: Rochester;
     src: url(assets/fonts/Rochester-Regular.ttf);
@@ -11,6 +13,10 @@
     font-family: Rubik;
     src: url(assets/fonts/Rubik-VariableFont.ttf);
 }
+
+/*#endregion*/
+
+/* #region animations */
 
 @keyframes slideDown {
     from {
@@ -30,8 +36,7 @@
     }
 }
 
-
-
+/*#endregion*/
 
 /* #region alap stílus */
 header{
@@ -129,7 +134,10 @@ html{
     scroll-behavior: smooth;
 }
 
-#page2{
+#us{
+    min-height: 100vh;
+}
+#locations{
     min-height: 100vh;
 }
 #gallery{
@@ -462,6 +470,7 @@ html{
 }
 }
 
+/* #region gallery */
 
 /*css slider*/
 
@@ -622,3 +631,5 @@ html{
         top:10%;
     }
 }
+
+/*#endregion*/
