@@ -128,7 +128,7 @@ if (!isClickInside && isMobileDevice) {
 
 });
 
-//slider javascript
+//slider javascript valami
 
 const slides = document.querySelectorAll('.slide');
 const prevButton = document.getElementById('prev');
