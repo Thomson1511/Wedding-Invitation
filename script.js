@@ -128,83 +128,52 @@ if (!isClickInside && isMobileDevice) {
 
 });
 
-//Slider script
+//slider javascript
 
-let items = document.querySelectorAll('.slider .list .item');
-let next = document.getElementById('next');
-let prev = document.getElementById('prev');
-let thumbnails = document.querySelectorAll('.thumbnail .item');
+const slides = document.querySelectorAll('.slide');
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+let currentIndex = 0;
+let autoSlideInterval;
 
-// config param
-
-let countItem = items.length;
-let itemActive = 0;
-
-// event next click
-
-next.onclick = function(){
-    itemActive = itemActive + 1;
-    if(itemActive >= countItem){
-        itemActive = 0;
-    }
-    showSlider();
+// Funkció a következő képre váltáshoz
+function showNextSlide() {
+    console.log(slides[currentIndex]);
+    slides[currentIndex].classList.remove('active');
+    console.log(slides);
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add('active');
 }
 
-//event prev click
-
-prev.onclick = function(){
-    itemActive = itemActive - 1;
-    if(itemActive < 0){
-        itemActive = countItem -1;
-    }
-    showSlider();
+// Funkció az előző képre váltáshoz
+function showPrevSlide() {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    slides[currentIndex].classList.add('active');
 }
 
-//auto run slider
-
-let refreshInterval = setInterval(() => {
-    next.click();
-}, 4000)
-
-function showSlider(){
-    //remove item active old
-    let itemActiveOld = document.querySelector('.slider .list .item.active');
-    let thumbnailActiveOld = document.querySelector('.thumbnail .item.active');
-    itemActiveOld.classList.remove('active');
-    thumbnailActiveOld.classList.remove('active');
-
-    //active new item
-    items[itemActive].classList.add('active');
-    thumbnails[itemActive].classList.add('active');
-
-    //clear auto time run slider
-    clearInterval(refreshInterval);
-    refreshInterval = setInterval(() => {
-        next.click();
-    }, 4000)
+// Automatikus képváltás elindítása
+function startAutoSlide() {
+    autoSlideInterval = setInterval(showNextSlide, 5000);
 }
 
-// click thumbnail
-thumbnails.forEach((thumbnail, index) =>{
-    thumbnail.addEventListener('click', () => {
-        itemActive = index;
-        showSlider();
-    })
-})
+// Automatikus képváltás leállítása
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
 
-document.addEventListener('DOMContentLoaded', function () {
-    var photoUs = document.querySelector('.photoUs img');
-    var currentImage = 1; // Kezdetben a Left-1 van megjelenítve
-
-    function toggleImage() {
-        if (currentImage === 1) {
-            photoUs.src = "assets/images/AboutUs/Left-2.jpg";
-            currentImage = 2;
-        } else {
-            photoUs.src = "assets/images/AboutUs/Left-1.jpg";
-            currentImage = 1;
-        }
-    }
-
-    setInterval(toggleImage, 5000); // 5000 ms = 5 másodperc
+// Eseményfigyelők a gombokhoz
+nextButton.addEventListener('click', () => {
+    stopAutoSlide();
+    showNextSlide();
+    startAutoSlide();
 });
+
+prevButton.addEventListener('click', () => {
+    stopAutoSlide();
+    showPrevSlide();
+    startAutoSlide();
+});
+
+// Automatikus indítás
+startAutoSlide();
