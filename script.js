@@ -127,3 +127,53 @@ if (!isClickInside && isMobileDevice) {
 });
 
 });
+
+//slider javascript
+
+const slides = document.querySelectorAll('.slide');
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+let currentIndex = 0;
+let autoSlideInterval;
+
+// Funkció a következő képre váltáshoz
+function showNextSlide() {
+    console.log(slides[currentIndex]);
+    slides[currentIndex].classList.remove('active');
+    console.log(slides);
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add('active');
+}
+
+// Funkció az előző képre váltáshoz
+function showPrevSlide() {
+    slides[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    slides[currentIndex].classList.add('active');
+}
+
+// Automatikus képváltás elindítása
+function startAutoSlide() {
+    autoSlideInterval = setInterval(showNextSlide, 5000);
+}
+
+// Automatikus képváltás leállítása
+function stopAutoSlide() {
+    clearInterval(autoSlideInterval);
+}
+
+// Eseményfigyelők a gombokhoz
+nextButton.addEventListener('click', () => {
+    stopAutoSlide();
+    showNextSlide();
+    startAutoSlide();
+});
+
+prevButton.addEventListener('click', () => {
+    stopAutoSlide();
+    showPrevSlide();
+    startAutoSlide();
+});
+
+// Automatikus indítás
+startAutoSlide();
