@@ -138,38 +138,31 @@ html{
 
 .bubble-container {
     position: relative;
-    width: 50vw;
-    height: 100vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-  }
+    width: 40%;
+    height: 100vh; /* Állítsd be a szükséges méretet */
+    overflow: hidden;
+    background-color: #f0f0f0; /* Háttérszín */
+}
 
-  .bubble {
+.bubble {
     position: absolute;
     border-radius: 50%;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-  }
-  
-  .bubble img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .bubble:hover {
-    z-index: 10; /* Előtérbe hozza a nagyított buborékot */
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 1s ease-in-out; /* Simított animáció */
+    transform-origin: center; /* Méretezés középpontja */
+}
+
+
 /*kezdetek*/
 
 #us{
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
 }
 #locations{
     min-height: 100vh;

@@ -179,61 +179,67 @@ prevButton.addEventListener('click', () => {
 startAutoSlide();
 
 //Kezdetek:
-  
-  //új
 
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const bubbleContainer = document.querySelector('.bubble-container');
 
-    // Buborékok adatai: méret és kép URL
+    // Buborékok adatai: méret, kép URL, pozíció és ID
     const bubbles = [
-        { size: 100, img: 'https://via.placeholder.com/150' },
-        { size: 150, img: 'https://via.placeholder.com/200' },
-        { size: 80, img: 'https://via.placeholder.com/100' },
-        { size: 120, img: 'https://via.placeholder.com/180' },
-        { size: 90, img: 'https://via.placeholder.com/120' },
-        { size: 110, img: 'https://via.placeholder.com/140' },
-        { size: 100, img: 'https://via.placeholder.com/150' },
-        { size: 150, img: 'https://via.placeholder.com/200' },
-        { size: 80, img: 'https://via.placeholder.com/100' },
-        { size: 120, img: 'https://via.placeholder.com/180' },
+        { id: 1, size: 120, img: 'assets/images/AboutUs/1.jpg', top: 20, left: 20 },
+        { id: 2, size: 150, img: 'assets/images/AboutUs/2.jpg', top: 90, left: 120 },
+        { id: 3, size: 80, img: 'assets/images/AboutUs/3.jpg', top: 10, left: 200 },
+        { id: 4, size: 120, img: 'assets/images/AboutUs/4.jpg', top: 55, left: 270 },
+        { id: 5, size: 90, img: 'assets/images/AboutUs/5.jpg', top: 5, left: 380 },
+        //{ id: 6, size: 120, img: 'https://via.placeholder.com/120', top: 20, left: 20 },
     ];
 
-    const placedBubbles = []; // Eltárolja a már elhelyezett buborékok pozícióit és méreteit
-
-    // Ellenőrzi, hogy az új buborék távolsága megfelelő-e az összes korábban elhelyezett buboréktól
-    const hasCollision = (x, y, size) => {
-        return placedBubbles.some(({ x: otherX, y: otherY, size: otherSize }) => {
-            const distance = Math.sqrt((x - otherX) ** 2 + (y - otherY) ** 2);
-            return distance < (size / 2 + otherSize / 2 + 10); // 10px távolság
-        });
-    };
-
-    // Buborékok generálása
+    // Buborékok létrehozása pozíciókkal
     bubbles.forEach((bubble) => {
         const bubbleElement = document.createElement('div');
         bubbleElement.classList.add('bubble');
         bubbleElement.style.width = `${bubble.size}px`;
         bubbleElement.style.height = `${bubble.size}px`;
         bubbleElement.style.background = `url(${bubble.img}) no-repeat center/cover`;
+        bubbleElement.setAttribute('data-id', bubble.id);
 
-        const maxTop = bubbleContainer.offsetHeight - bubble.size;
-        const maxLeft = bubbleContainer.offsetWidth - bubble.size;
-
-        let randomTop, randomLeft;
-
-        // Addig generál új pozíciót, amíg nincs ütközés
-        do {
-            randomTop = Math.random() * maxTop;
-            randomLeft = Math.random() * maxLeft;
-        } while (hasCollision(randomLeft, randomTop, bubble.size));
-
-        // Elmenti az elhelyezett buborék adatait
-        placedBubbles.push({ x: randomLeft, y: randomTop, size: bubble.size });
-
-        bubbleElement.style.top = `${randomTop}px`;
-        bubbleElement.style.left = `${randomLeft}px`;
+        // Pozíciók beállítása
+        bubbleElement.style.top = `${bubble.top}px`;
+        bubbleElement.style.left = `${bubble.left}px`;
 
         bubbleContainer.appendChild(bubbleElement);
     });
+
+    // Nagyítás vezérlése
+    const allBubbles = document.querySelectorAll('.bubble');
+    let currentIndex = 0;
+
+    function highlightBubble() {
+        // Minden buborék visszaállítása eredeti méretére
+        allBubbles.forEach((bubble) => {
+            const bubbleData = bubbles[bubble.dataset.id - 1];
+            bubble.style.width = `${bubbleData.size}px`;
+            bubble.style.height = `${bubbleData.size}px`;
+            bubble.style.zIndex = 1; // Alacsonyabb réteg
+        });
+
+        // Aktuális buborék nagyítása
+       
+        setTimeout(() => {
+            const currentBubble = allBubbles[currentIndex];
+            currentBubble.style.width = '400px';
+            currentBubble.style.height = '400px';
+            currentBubble.style.zIndex = 10;
+          }, "1000");
+
+        
+
+        // Következő buborék indexe
+        currentIndex = (currentIndex + 1) % allBubbles.length; // Körbeforgás
+    }
+
+    // 3 másodpercenként nagyítás futtatása
+    setInterval(highlightBubble, 3000);
+
+    // Az első buborék kiemelése induláskor
+    highlightBubble();
 });
