@@ -327,6 +327,7 @@ html{
         text-align: center;
         margin-bottom: 10px;
         border-radius: 10px;
+        font-family: 'Diphylleia';
     }
 
     
@@ -432,6 +433,7 @@ html{
         text-align: center;
         margin-bottom: 10px;
         border-radius: 10px;
+        font-family: 'Diphylleia';
     }
     
 .glass{
@@ -519,6 +521,7 @@ html{
     border-radius: 20px;
     border: 3px solid #D27F78;
     background-color: rgba(255, 255, 255, 0.4);
+    font-family: 'Diphylleia';
 }
 .linkNav:hover{
     color: #D27F78;
