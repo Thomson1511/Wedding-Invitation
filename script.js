@@ -177,3 +177,63 @@ prevButton.addEventListener('click', () => {
 
 // Automatikus indítás
 startAutoSlide();
+
+//Kezdetek:
+  
+  //új
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const bubbleContainer = document.querySelector('.bubble-container');
+
+    // Buborékok adatai: méret és kép URL
+    const bubbles = [
+        { size: 100, img: 'https://via.placeholder.com/150' },
+        { size: 150, img: 'https://via.placeholder.com/200' },
+        { size: 80, img: 'https://via.placeholder.com/100' },
+        { size: 120, img: 'https://via.placeholder.com/180' },
+        { size: 90, img: 'https://via.placeholder.com/120' },
+        { size: 110, img: 'https://via.placeholder.com/140' },
+        { size: 100, img: 'https://via.placeholder.com/150' },
+        { size: 150, img: 'https://via.placeholder.com/200' },
+        { size: 80, img: 'https://via.placeholder.com/100' },
+        { size: 120, img: 'https://via.placeholder.com/180' },
+    ];
+
+    const placedBubbles = []; // Eltárolja a már elhelyezett buborékok pozícióit és méreteit
+
+    // Ellenőrzi, hogy az új buborék távolsága megfelelő-e az összes korábban elhelyezett buboréktól
+    const hasCollision = (x, y, size) => {
+        return placedBubbles.some(({ x: otherX, y: otherY, size: otherSize }) => {
+            const distance = Math.sqrt((x - otherX) ** 2 + (y - otherY) ** 2);
+            return distance < (size / 2 + otherSize / 2 + 10); // 10px távolság
+        });
+    };
+
+    // Buborékok generálása
+    bubbles.forEach((bubble) => {
+        const bubbleElement = document.createElement('div');
+        bubbleElement.classList.add('bubble');
+        bubbleElement.style.width = `${bubble.size}px`;
+        bubbleElement.style.height = `${bubble.size}px`;
+        bubbleElement.style.background = `url(${bubble.img}) no-repeat center/cover`;
+
+        const maxTop = bubbleContainer.offsetHeight - bubble.size;
+        const maxLeft = bubbleContainer.offsetWidth - bubble.size;
+
+        let randomTop, randomLeft;
+
+        // Addig generál új pozíciót, amíg nincs ütközés
+        do {
+            randomTop = Math.random() * maxTop;
+            randomLeft = Math.random() * maxLeft;
+        } while (hasCollision(randomLeft, randomTop, bubble.size));
+
+        // Elmenti az elhelyezett buborék adatait
+        placedBubbles.push({ x: randomLeft, y: randomTop, size: bubble.size });
+
+        bubbleElement.style.top = `${randomTop}px`;
+        bubbleElement.style.left = `${randomLeft}px`;
+
+        bubbleContainer.appendChild(bubbleElement);
+    });
+});
