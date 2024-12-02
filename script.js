@@ -181,65 +181,93 @@ startAutoSlide();
 //Kezdetek:
 
 document.addEventListener('DOMContentLoaded', () => {
-    const bubbleContainer = document.querySelector('.bubble-container');
+    const rightBubbleContainer = document.querySelector('.bubble-container.right-bubbles');
+    const leftBubbleContainer = document.querySelector('.bubble-container.left-bubbles');
 
-    // Buborékok adatai: méret, kép URL, pozíció és ID
-    const bubbles = [
+    const rightBubbles = [
         { id: 1, size: 120, img: 'assets/images/AboutUs/1.jpg', top: 20, left: 20 },
         { id: 2, size: 150, img: 'assets/images/AboutUs/2.jpg', top: 90, left: 120 },
         { id: 3, size: 80, img: 'assets/images/AboutUs/3.jpg', top: 10, left: 200 },
-        { id: 4, size: 120, img: 'assets/images/AboutUs/4.jpg', top: 55, left: 270 },
-        { id: 5, size: 90, img: 'assets/images/AboutUs/5.jpg', top: 5, left: 380 },
-        //{ id: 6, size: 120, img: 'https://via.placeholder.com/120', top: 20, left: 20 },
     ];
 
-    // Buborékok létrehozása pozíciókkal
-    bubbles.forEach((bubble) => {
-        const bubbleElement = document.createElement('div');
-        bubbleElement.classList.add('bubble');
-        bubbleElement.style.width = `${bubble.size}px`;
-        bubbleElement.style.height = `${bubble.size}px`;
-        bubbleElement.style.background = `url(${bubble.img}) no-repeat center/cover`;
-        bubbleElement.setAttribute('data-id', bubble.id);
+    const leftBubbles = [
+        { id: 4, size: 100, img: 'assets/images/AboutUs/1.jpg', top: 30, left: 50 },
+        { id: 5, size: 130, img: 'assets/images/AboutUs/2.jpg', top: 70, left: 150 },
+        { id: 6, size: 90, img: 'assets/images/AboutUs/3.jpg', top: 40, left: 250 },
+    ];
 
-        // Pozíciók beállítása
-        bubbleElement.style.top = `${bubble.top}px`;
-        bubbleElement.style.left = `${bubble.left}px`;
+    const createBubbles = (container, bubbles) => {
+        bubbles.forEach((bubble) => {
+            const bubbleElement = document.createElement('div');
+            bubbleElement.classList.add('bubble');
+            bubbleElement.style.width = `${bubble.size}px`;
+            bubbleElement.style.height = `${bubble.size}px`;
+            bubbleElement.style.background = `url(${bubble.img}) no-repeat center/cover`;
+            bubbleElement.style.top = `${bubble.top}px`;
+            bubbleElement.style.left = `${bubble.left}px`;
+            bubbleElement.style.position = 'absolute';
 
-        bubbleContainer.appendChild(bubbleElement);
-    });
-
-    // Nagyítás vezérlése
-    const allBubbles = document.querySelectorAll('.bubble');
-    let currentIndex = 0;
-
-    function highlightBubble() {
-        // Minden buborék visszaállítása eredeti méretére
-        allBubbles.forEach((bubble) => {
-            const bubbleData = bubbles[bubble.dataset.id - 1];
-            bubble.style.width = `${bubbleData.size}px`;
-            bubble.style.height = `${bubbleData.size}px`;
-            bubble.style.zIndex = 1; // Alacsonyabb réteg
+            container.appendChild(bubbleElement);
         });
+    };
 
-        // Aktuális buborék nagyítása
-       
-        setTimeout(() => {
-            const currentBubble = allBubbles[currentIndex];
-            currentBubble.style.width = '400px';
-            currentBubble.style.height = '400px';
-            currentBubble.style.zIndex = 10;
-          }, "1000");
+    createBubbles(rightBubbleContainer, rightBubbles);
+    createBubbles(leftBubbleContainer, leftBubbles);
 
-        
+    const getCenterPosition = (container, side) => {
+        const rect = container.getBoundingClientRect();
+        return {
+            x: side === 'right' ? rect.width : 0,
+            y: rect.height / 2,
+        };
+    };
 
-        // Következő buborék indexe
-        currentIndex = (currentIndex + 1) % allBubbles.length; // Körbeforgás
-    }
+    const highlightBubble = (bubble, centerPosition, containerSide) => {
+        // Animált mozgás a középpontba
+        bubble.style.transition = 'all 1s ease-in-out';
+    
+        if (containerSide === 'left') {
+            bubble.style.left = `${centerPosition.x - bubble.offsetWidth}px`;
+        } else if (containerSide === 'right') {
+            bubble.style.left = `${centerPosition.x}px`;
+        }
+    
+        bubble.style.top = `${centerPosition.y - bubble.offsetHeight / 2}px`;
+    
+        // Buborék nagyítása és z-index előrehozása
+        bubble.style.width = '400px';
+        bubble.style.height = '400px';
+        bubble.style.zIndex = 10;
+    };
 
-    // 3 másodpercenként nagyítás futtatása
-    setInterval(highlightBubble, 3000);
+    const resetBubble = (bubble, originalSize) => {
+        bubble.style.transition = ''; // Animáció eltávolítása
+        bubble.style.width = `${originalSize}px`;
+        bubble.style.height = `${originalSize}px`;
+        bubble.style.zIndex = 1;
+    };
 
-    // Az első buborék kiemelése induláskor
-    highlightBubble();
+    let currentIndexRight = 0;
+    let currentIndexLeft = 0;
+
+    setInterval(() => {
+    const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
+    const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
+
+    const rightCenter = getCenterPosition(rightBubbleContainer, 'left');
+    const leftCenter = getCenterPosition(leftBubbleContainer, 'right');
+
+    // Reset previous bubbles
+    if (currentIndexRight > 0) resetBubble(allRightBubbles[currentIndexRight - 1], rightBubbles[currentIndexRight - 1].size);
+    if (currentIndexLeft > 0) resetBubble(allLeftBubbles[currentIndexLeft - 1], leftBubbles[currentIndexLeft - 1].size);
+
+    // Highlight current bubbles
+    highlightBubble(allRightBubbles[currentIndexRight], rightCenter, 'right');
+    highlightBubble(allLeftBubbles[currentIndexLeft], leftCenter, 'left');
+
+    // Update indices
+    currentIndexRight = (currentIndexRight + 1) % allRightBubbles.length;
+    currentIndexLeft = (currentIndexLeft + 1) % allLeftBubbles.length;
+}, 3000);
+
 });

@@ -139,9 +139,9 @@ html{
 .bubble-container {
     position: relative;
     width: 40%;
-    height: 100vh; /* Állítsd be a szükséges méretet */
+    height: 100vh;
     overflow: hidden;
-    background-color: #f0f0f0; /* Háttérszín */
+    background-color: #f0f0f0;
 }
 
 .bubble {
@@ -155,6 +155,13 @@ html{
     transform-origin: center; /* Méretezés középpontja */
 }
 
+.bubble-container.left-bubbles {
+    justify-content: start;
+}
+
+.bubble-container.right-bubbles {
+    justify-content: end;
+}
 
 /*kezdetek*/
 
@@ -162,7 +169,7 @@ html{
     min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
 }
 #locations{
     min-height: 100vh;
