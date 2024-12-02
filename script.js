@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getCenterPosition = (container, side) => {
         const rect = container.getBoundingClientRect();
         return {
-            x: side === 'right' ? rect.width : 0,
+            x: side === 'right' ? rect.width - 300 : 0,
             y: rect.height / 2,
         };
     };
@@ -256,6 +256,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const rightCenter = getCenterPosition(rightBubbleContainer, 'left');
     const leftCenter = getCenterPosition(leftBubbleContainer, 'right');
+    console.log(rightCenter);
+    console.log(leftCenter);
 
     // Reset previous bubbles
     if (currentIndexRight > 0) resetBubble(allRightBubbles[currentIndexRight - 1], rightBubbles[currentIndexRight - 1].size);

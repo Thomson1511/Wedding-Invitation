@@ -156,7 +156,7 @@ html{
 }
 
 .bubble-container.left-bubbles {
-    justify-content: start;
+    justify-content: flex-start;
 }
 
 .bubble-container.right-bubbles {
