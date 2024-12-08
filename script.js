@@ -189,26 +189,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const leftBubbleContainer = document.querySelector('.bubble-container.left-bubbles');
 
     const rightBubbles = [
-        { id: 1, size: 120, img: 'assets/images/AboutUs/Tomi/1.jpg', top: 20, left: 20 },
-        { id: 2, size: 150, img: 'assets/images/AboutUs/Tomi/2.jpg', top: 90, left: 120 },
-        { id: 3, size: 80, img: 'assets/images/AboutUs/Tomi/3.jpg', top: 10, left: 200 },
-        { id: 4, size: 170, img: 'assets/images/AboutUs/Tomi/4.jpg', top: 30, left: 270 },
-        { id: 5, size: 100, img: 'assets/images/AboutUs/Tomi/5.jpg', top: 8, left: 440 },
-        { id: 6, size: 70, img: 'assets/images/AboutUs/Tomi/6.jpg', top: 120, left: 440 },
-        { id: 7, size: 200, img: 'assets/images/AboutUs/Tomi/7.jpg', top: 40, left: 530 },
-        { id: 8, size: 140, img: 'assets/images/AboutUs/Tomi/8.jpg', top: 190, left: 5 },
-        { id: 9, size: 80, img: 'assets/images/AboutUs/Tomi/9.jpg', top: 250, left: 150 },
-        { id: 10, size: 170, img: 'assets/images/AboutUs/Tomi/10.jpg', top: 205, left: 235 },
-        { id: 11, size: 90, img: 'assets/images/AboutUs/Tomi/11.jpg', top: 200, left: 405 },
-        { id: 12, size: 100, img: 'assets/images/AboutUs/Tomi/12.jpg', top: 295, left: 410 },
-        { id: 13, size: 110, img: 'assets/images/AboutUs/Tomi/13.jpg', top: 230, left: 500 },
+        { id: 1, size: 120, img: 'assets/images/AboutUs/Tomi/1.jpg', top: 20, left: 20, focusX: 20, focusY: 20 },
+        { id: 2, size: 150, img: 'assets/images/AboutUs/Tomi/2.jpg', top: 90, left: 120, focusX: 40, focusY: 40 },
+        { id: 3, size: 80, img: 'assets/images/AboutUs/Tomi/3.jpg', top: 10, left: 200, focusX: 0, focusY: 20  },
+        { id: 4, size: 170, img: 'assets/images/AboutUs/Tomi/4.jpg', top: 30, left: 270, focusX: 40, focusY: 60  },
+        { id: 5, size: 100, img: 'assets/images/AboutUs/Tomi/5.jpg', top: 8, left: 440, focusX: 60, focusY: 60  },
+        { id: 6, size: 70, img: 'assets/images/AboutUs/Tomi/6.jpg', top: 120, left: 440, focusX: 60, focusY: 0  },
+        { id: 7, size: 200, img: 'assets/images/AboutUs/Tomi/7.jpg', top: 40, left: 530, focusX: 60, focusY: 60  },
+        { id: 8, size: 140, img: 'assets/images/AboutUs/Tomi/8.jpg', top: 190, left: 5, focusX: 60, focusY: 0  },
+        { id: 9, size: 80, img: 'assets/images/AboutUs/Tomi/9.jpg', top: 250, left: 150, focusX: 60, focusY: 30  },
+        { id: 10, size: 170, img: 'assets/images/AboutUs/Tomi/10.jpg', top: 205, left: 235, focusX: 60, focusY: 60  },
+        { id: 11, size: 90, img: 'assets/images/AboutUs/Tomi/11.jpg', top: 200, left: 405, focusX: 60, focusY: 20  },
+        { id: 12, size: 100, img: 'assets/images/AboutUs/Tomi/12.jpg', top: 295, left: 410, focusX: 40, focusY: 60  },
+        { id: 13, size: 110, img: 'assets/images/AboutUs/Tomi/13.jpg', top: 230, left: 500, focusX: 40, focusY: 60  },
         
     ];
 
     const leftBubbles = [
-        { id: 4, size: 100, img: 'assets/images/AboutUs/Viki/1.jpg', top: 30, left: 50 },
-        { id: 5, size: 130, img: 'assets/images/AboutUs/Viki/2.jpg', top: 70, left: 150 },
-        { id: 6, size: 90, img: 'assets/images/AboutUs/Viki/3.jpg', top: 40, left: 250 },
+        { id: 4, size: 100, img: 'assets/images/AboutUs/Viki/1.jpg', top: 30, left: 50, focusX: 60, focusY: 60 },
+        { id: 5, size: 130, img: 'assets/images/AboutUs/Viki/2.jpg', top: 70, left: 150, focusX: 60, focusY: 60 },
+        { id: 6, size: 90, img: 'assets/images/AboutUs/Viki/3.jpg', top: 30, left: 270, focusX: 60, focusY: 60 },
     ];
 
     const createBubbles = (container, bubbles) => {
@@ -218,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bubbleElement.style.width = `${bubble.size}px`;
             bubbleElement.style.height = `${bubble.size}px`;
             bubbleElement.style.background = `url(${bubble.img}) no-repeat center/cover`;
+            bubbleElement.style.backgroundPosition = `${bubble.focusX}% ${bubble.focusY}%`;
             bubbleElement.style.top = `${bubble.top}px`;
             bubbleElement.style.left = `${bubble.left}px`;
             bubbleElement.style.position = 'absolute';
