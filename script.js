@@ -227,12 +227,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const leftContainerWidth = leftBubbleContainer.offsetWidth;
     const leftCenter = { x: leftContainerWidth - 400, y: verticalCenter }; // Updated to align the bubble's right edge with the container's right edge
 
-    const highlightBubble = (bubble, centerPosition, containerSide) => {
+    const highlightBubble = (bubble, centerPosition) => {
         bubble.style.transition = 'all 1s ease-in-out';
-        
         bubble.style.left = `${centerPosition.x}px`;
         bubble.style.top = `${centerPosition.y - bubble.offsetHeight / 2}px`;
-
         bubble.style.width = '400px';
         bubble.style.height = '400px';
         bubble.style.zIndex = 10;
@@ -243,34 +241,39 @@ document.addEventListener('DOMContentLoaded', () => {
         bubble.style.width = `${originalBubbleData.size}px`;
         bubble.style.height = `${originalBubbleData.size}px`;
         bubble.style.zIndex = 1;
-
-        // Reset position
         bubble.style.top = `${originalBubbleData.top}px`;
         bubble.style.left = `${originalBubbleData.left}px`;
     };
 
     let currentIndexRight = 0;
     let currentIndexLeft = 0;
+    let previousIndexRight = null;
+    let previousIndexLeft = null;
 
     setInterval(() => {
         const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
         const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
 
         // Reset previous bubbles
-        if (currentIndexRight > 0 || currentIndexRight === 0) {
-            resetBubble(allRightBubbles[currentIndexRight], rightBubbles[currentIndexRight]);
+        if (previousIndexRight !== null) {
+            resetBubble(allRightBubbles[previousIndexRight], rightBubbles[previousIndexRight]);
         }
-        if (currentIndexLeft > 0 || currentIndexLeft === 0) {
-            resetBubble(allLeftBubbles[currentIndexLeft], leftBubbles[currentIndexLeft]);
+        if (previousIndexLeft !== null) {
+            resetBubble(allLeftBubbles[previousIndexLeft], leftBubbles[previousIndexLeft]);
         }
 
         // Highlight current bubbles
-        highlightBubble(allRightBubbles[currentIndexRight], rightCenter, 'right');
-        highlightBubble(allLeftBubbles[currentIndexLeft], leftCenter, 'left');
+        highlightBubble(allRightBubbles[currentIndexRight], rightCenter);
+        highlightBubble(allLeftBubbles[currentIndexLeft], leftCenter);
 
-        // Update indices
+        // Update previous indices
+        previousIndexRight = currentIndexRight;
+        previousIndexLeft = currentIndexLeft;
+
+        // Update current indices
         currentIndexRight = (currentIndexRight + 1) % allRightBubbles.length;
         currentIndexLeft = (currentIndexLeft + 1) % allLeftBubbles.length;
     }, 3000);
 });
+
 
