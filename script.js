@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let previousIndexRight = null;
     let previousIndexLeft = null;
 
-    /*setInterval(() => {
+    setInterval(() => {
         const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
         const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
 
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update current indices
         currentIndexRight = (currentIndexRight + 1) % allRightBubbles.length;
         currentIndexLeft = (currentIndexLeft + 1) % allLeftBubbles.length;
-    }, 3000);*/
+    }, 3000);
 });
 
 
