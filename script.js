@@ -178,6 +178,10 @@ prevButton.addEventListener('click', () => {
 // Automatikus indítás
 startAutoSlide();
 
+
+
+
+
 //Kezdetek:
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -214,62 +218,59 @@ document.addEventListener('DOMContentLoaded', () => {
     createBubbles(rightBubbleContainer, rightBubbles);
     createBubbles(leftBubbleContainer, leftBubbles);
 
-    const getCenterPosition = (container, side) => {
-        const rect = container.getBoundingClientRect();
-        return {
-            x: side === 'right' ? rect.width - 300 : 0,
-            y: rect.height / 2,
-        };
-    };
+    // Define fixed center positions
+    const usSection = document.querySelector('#us');
+    const usSectionHeight = usSection.offsetHeight;
+    const verticalCenter = (usSectionHeight / 2) - 160;
+
+    const rightCenter = { x: 0, y: verticalCenter };
+    const leftContainerWidth = leftBubbleContainer.offsetWidth;
+    const leftCenter = { x: leftContainerWidth - 400, y: verticalCenter }; // Updated to align the bubble's right edge with the container's right edge
 
     const highlightBubble = (bubble, centerPosition, containerSide) => {
-        // Animált mozgás a középpontba
         bubble.style.transition = 'all 1s ease-in-out';
-    
-        if (containerSide === 'left') {
-            bubble.style.left = `${centerPosition.x - bubble.offsetWidth}px`;
-        } else if (containerSide === 'right') {
-            bubble.style.left = `${centerPosition.x}px`;
-        }
-    
+        
+        bubble.style.left = `${centerPosition.x}px`;
         bubble.style.top = `${centerPosition.y - bubble.offsetHeight / 2}px`;
-    
-        // Buborék nagyítása és z-index előrehozása
+
         bubble.style.width = '400px';
         bubble.style.height = '400px';
         bubble.style.zIndex = 10;
     };
 
-    const resetBubble = (bubble, originalSize) => {
-        bubble.style.transition = ''; // Animáció eltávolítása
-        bubble.style.width = `${originalSize}px`;
-        bubble.style.height = `${originalSize}px`;
+    const resetBubble = (bubble, originalBubbleData) => {
+        bubble.style.transition = ''; // Remove animation
+        bubble.style.width = `${originalBubbleData.size}px`;
+        bubble.style.height = `${originalBubbleData.size}px`;
         bubble.style.zIndex = 1;
+
+        // Reset position
+        bubble.style.top = `${originalBubbleData.top}px`;
+        bubble.style.left = `${originalBubbleData.left}px`;
     };
 
     let currentIndexRight = 0;
     let currentIndexLeft = 0;
 
     setInterval(() => {
-    const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
-    const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
+        const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
+        const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
 
-    const rightCenter = getCenterPosition(rightBubbleContainer, 'left');
-    const leftCenter = getCenterPosition(leftBubbleContainer, 'right');
-    console.log(rightCenter);
-    console.log(leftCenter);
+        // Reset previous bubbles
+        if (currentIndexRight > 0 || currentIndexRight === 0) {
+            resetBubble(allRightBubbles[currentIndexRight], rightBubbles[currentIndexRight]);
+        }
+        if (currentIndexLeft > 0 || currentIndexLeft === 0) {
+            resetBubble(allLeftBubbles[currentIndexLeft], leftBubbles[currentIndexLeft]);
+        }
 
-    // Reset previous bubbles
-    if (currentIndexRight > 0) resetBubble(allRightBubbles[currentIndexRight - 1], rightBubbles[currentIndexRight - 1].size);
-    if (currentIndexLeft > 0) resetBubble(allLeftBubbles[currentIndexLeft - 1], leftBubbles[currentIndexLeft - 1].size);
+        // Highlight current bubbles
+        highlightBubble(allRightBubbles[currentIndexRight], rightCenter, 'right');
+        highlightBubble(allLeftBubbles[currentIndexLeft], leftCenter, 'left');
 
-    // Highlight current bubbles
-    highlightBubble(allRightBubbles[currentIndexRight], rightCenter, 'right');
-    highlightBubble(allLeftBubbles[currentIndexLeft], leftCenter, 'left');
-
-    // Update indices
-    currentIndexRight = (currentIndexRight + 1) % allRightBubbles.length;
-    currentIndexLeft = (currentIndexLeft + 1) % allLeftBubbles.length;
-}, 3000);
-
+        // Update indices
+        currentIndexRight = (currentIndexRight + 1) % allRightBubbles.length;
+        currentIndexLeft = (currentIndexLeft + 1) % allLeftBubbles.length;
+    }, 3000);
 });
+
