@@ -141,7 +141,6 @@ html{
     width: 40%;
     height: 100vh;
     overflow: hidden;
-    background-color: #f0f0f0;
 }
 
 .bubble {
@@ -162,6 +161,20 @@ html{
 .bubble-container.right-bubbles {
     justify-content: end;
 }
+.headerUs{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    height: 60px;
+    font-size: 40px;
+}
+.nameHeaderUs{
+    font-family: 'Diphylleia';
+    letter-spacing: 0.5px;
+
+}
 
 /*kezdetek*/
 
@@ -170,6 +183,7 @@ html{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.2);
 }
 #locations{
     min-height: 100vh;

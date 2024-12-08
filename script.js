@@ -190,17 +190,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const rightBubbles = [
         { id: 1, size: 120, img: 'assets/images/AboutUs/Tomi/1.jpg', top: 20, left: 20, focusX: 20, focusY: 20 },
-        { id: 2, size: 150, img: 'assets/images/AboutUs/Tomi/2.jpg', top: 90, left: 120, focusX: 40, focusY: 40 },
-        { id: 3, size: 80, img: 'assets/images/AboutUs/Tomi/3.jpg', top: 10, left: 200, focusX: 0, focusY: 20  },
-        { id: 4, size: 170, img: 'assets/images/AboutUs/Tomi/4.jpg', top: 30, left: 270, focusX: 40, focusY: 60  },
-        { id: 5, size: 100, img: 'assets/images/AboutUs/Tomi/5.jpg', top: 8, left: 440, focusX: 60, focusY: 60  },
-        { id: 6, size: 70, img: 'assets/images/AboutUs/Tomi/6.jpg', top: 120, left: 440, focusX: 60, focusY: 0  },
-        { id: 7, size: 200, img: 'assets/images/AboutUs/Tomi/7.jpg', top: 40, left: 530, focusX: 60, focusY: 60  },
-        { id: 8, size: 140, img: 'assets/images/AboutUs/Tomi/8.jpg', top: 190, left: 5, focusX: 60, focusY: 0  },
-        { id: 9, size: 80, img: 'assets/images/AboutUs/Tomi/9.jpg', top: 250, left: 150, focusX: 60, focusY: 30  },
-        { id: 10, size: 170, img: 'assets/images/AboutUs/Tomi/10.jpg', top: 205, left: 235, focusX: 60, focusY: 60  },
-        { id: 11, size: 90, img: 'assets/images/AboutUs/Tomi/11.jpg', top: 200, left: 405, focusX: 60, focusY: 20  },
-        { id: 12, size: 100, img: 'assets/images/AboutUs/Tomi/12.jpg', top: 295, left: 410, focusX: 40, focusY: 60  },
+        { id: 2, size: 85, img: 'assets/images/AboutUs/Tomi/13.jpg', top: 5, left: 140, focusX: 40, focusY: 60  },
+        { id: 3, size: 150, img: 'assets/images/AboutUs/Tomi/2.jpg', top: 95, left: 120, focusX: 40, focusY: 40 },
+        { id: 4, size: 80, img: 'assets/images/AboutUs/Tomi/3.jpg', top: 10, left: 230, focusX: 0, focusY: 20  },
+        { id: 5, size: 170, img: 'assets/images/AboutUs/Tomi/4.jpg', top: 65, left: 270, focusX: 40, focusY: 60  },
+        { id: 6, size: 100, img: 'assets/images/AboutUs/Tomi/5.jpg', top: 8, left: 440, focusX: 60, focusY: 60  },
+        { id: 7, size: 70, img: 'assets/images/AboutUs/Tomi/6.jpg', top: 120, left: 445, focusX: 60, focusY: 0  },
+        { id: 8, size: 200, img: 'assets/images/AboutUs/Tomi/7.jpg', top: 40, left: 535, focusX: 60, focusY: 60  },
+        { id: 9, size: 140, img: 'assets/images/AboutUs/Tomi/8.jpg', top: 190, left: 5, focusX: 60, focusY: 0  },
+        { id: 10, size: 80, img: 'assets/images/AboutUs/Tomi/9.jpg', top: 250, left: 150, focusX: 60, focusY: 30  },
+        { id: 11, size: 170, img: 'assets/images/AboutUs/Tomi/10.jpg', top: 235, left: 235, focusX: 60, focusY: 60  },
+        { id: 12, size: 90, img: 'assets/images/AboutUs/Tomi/11.jpg', top: 200, left: 405, focusX: 60, focusY: 20  },
+        { id: 13, size: 100, img: 'assets/images/AboutUs/Tomi/12.jpg', top: 295, left: 410, focusX: 40, focusY: 60  },
         { id: 13, size: 110, img: 'assets/images/AboutUs/Tomi/13.jpg', top: 230, left: 500, focusX: 40, focusY: 60  },
         
     ];
@@ -208,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const leftBubbles = [
         { id: 4, size: 100, img: 'assets/images/AboutUs/Viki/1.jpg', top: 30, left: 50, focusX: 60, focusY: 60 },
         { id: 5, size: 130, img: 'assets/images/AboutUs/Viki/2.jpg', top: 70, left: 150, focusX: 60, focusY: 60 },
-        { id: 6, size: 90, img: 'assets/images/AboutUs/Viki/3.jpg', top: 30, left: 270, focusX: 60, focusY: 60 },
+        { id: 6, size: 90, img: 'assets/images/AboutUs/Viki/3.jpg', top: 90, left: 290, focusX: 60, focusY: 60 },
     ];
 
     const createBubbles = (container, bubbles) => {
@@ -262,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let previousIndexRight = null;
     let previousIndexLeft = null;
 
-    setInterval(() => {
+    /*setInterval(() => {
         const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
         const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
 
@@ -285,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update current indices
         currentIndexRight = (currentIndexRight + 1) % allRightBubbles.length;
         currentIndexLeft = (currentIndexLeft + 1) % allLeftBubbles.length;
-    }, 3000);
+    }, 3000);*/
 });
 
 
