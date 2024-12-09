@@ -218,8 +218,14 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (screenWidth >= 1820 && screenWidth < 1920) return 0.98;
         else if (screenWidth >= 1720 && screenWidth < 1820) return 0.93;
         else if (screenWidth >= 1620 && screenWidth < 1720) return 0.88;
-        else if (screenWidth >= 1520 && screenWidth < 1620) return 0.83;
-        return 0.81; // Default for smaller screens
+        else if (screenWidth >= 1520 && screenWidth < 1620) return 0.82;
+
+        else if (screenWidth >= 1420 && screenWidth < 1520) return 0.77;
+        else if (screenWidth >= 1320 && screenWidth < 1420) return 0.71;
+        else if (screenWidth >= 1220 && screenWidth < 1320) return 0.66;
+        else if (screenWidth >= 1120 && screenWidth < 1220) return 0.61;
+        else if (screenWidth >= 1020 && screenWidth < 1120) return 0.53;
+        return 0.50; // Default for smaller screens
     };
 
     const leftHeader = document.getElementById("leftHead");
