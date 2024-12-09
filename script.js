@@ -219,7 +219,6 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (screenWidth >= 1720 && screenWidth < 1820) return 0.93;
         else if (screenWidth >= 1620 && screenWidth < 1720) return 0.88;
         else if (screenWidth >= 1520 && screenWidth < 1620) return 0.82;
-
         else if (screenWidth >= 1420 && screenWidth < 1520) return 0.77;
         else if (screenWidth >= 1320 && screenWidth < 1420) return 0.71;
         else if (screenWidth >= 1220 && screenWidth < 1320) return 0.66;
@@ -286,12 +285,14 @@ document.addEventListener('DOMContentLoaded', () => {
         bubble.style.left = `${originalBubbleData.left * multiplier}px`;
     };
 
+    const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
     let currentIndexRight = 0;
     let currentIndexLeft = 0;
     let previousIndexRight = null;
     let previousIndexLeft = null;
 
-    setInterval(() => {
+    setInterval(async () => {
         const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
         const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
 
@@ -302,6 +303,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (previousIndexLeft !== null) {
             resetBubble(allLeftBubbles[previousIndexLeft], leftBubbles[previousIndexLeft]);
         }
+
+        await wait(1000);
 
         // Highlight current bubbles
         highlightBubble(allRightBubbles[currentIndexRight], rightCenter);
