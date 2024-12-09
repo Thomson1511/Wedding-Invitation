@@ -212,16 +212,37 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 6, size: 90, img: 'assets/images/AboutUs/Viki/3.jpg', top: 90, left: 290, focusX: 60, focusY: 60 },
     ];
 
+    const getScreenMultiplier = () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth >= 1920) return 1;
+        else if (screenWidth >= 1820 && screenWidth < 1920) return 0.98;
+        else if (screenWidth >= 1720 && screenWidth < 1820) return 0.93;
+        else if (screenWidth >= 1620 && screenWidth < 1720) return 0.88;
+        else if (screenWidth >= 1520 && screenWidth < 1620) return 0.83;
+        return 0.81; // Default for smaller screens
+    };
+
+    const leftHeader = document.getElementById("leftHead");
+    const rightHeader = document.getElementById("rightHead");
+
+    const multiplier = getScreenMultiplier();
+
+    leftHeader.style.left = 315 * multiplier;
+    leftHeader.style.fontSize = 40 * multiplier;
+    rightHeader.style.left = 315 * multiplier;
+    rightHeader.style.fontSize = 40 * multiplier;
+
     const createBubbles = (container, bubbles) => {
+        const multiplier = getScreenMultiplier();
         bubbles.forEach((bubble) => {
             const bubbleElement = document.createElement('div');
             bubbleElement.classList.add('bubble');
-            bubbleElement.style.width = `${bubble.size}px`;
-            bubbleElement.style.height = `${bubble.size}px`;
+            bubbleElement.style.width = `${bubble.size * multiplier}px`;
+            bubbleElement.style.height = `${bubble.size * multiplier}px`;
             bubbleElement.style.background = `url(${bubble.img}) no-repeat center/cover`;
             bubbleElement.style.backgroundPosition = `${bubble.focusX}% ${bubble.focusY}%`;
-            bubbleElement.style.top = `${bubble.top}px`;
-            bubbleElement.style.left = `${bubble.left}px`;
+            bubbleElement.style.top = `${bubble.top * multiplier}px`;
+            bubbleElement.style.left = `${bubble.left * multiplier}px`;
             bubbleElement.style.position = 'absolute';
 
             container.appendChild(bubbleElement);
@@ -250,12 +271,13 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const resetBubble = (bubble, originalBubbleData) => {
+        const multiplier = getScreenMultiplier();
         bubble.style.transition = ''; // Remove animation
-        bubble.style.width = `${originalBubbleData.size}px`;
-        bubble.style.height = `${originalBubbleData.size}px`;
+        bubble.style.width = `${originalBubbleData.size * multiplier}px`;
+        bubble.style.height = `${originalBubbleData.size * multiplier}px`;
         bubble.style.zIndex = 1;
-        bubble.style.top = `${originalBubbleData.top}px`;
-        bubble.style.left = `${originalBubbleData.left}px`;
+        bubble.style.top = `${originalBubbleData.top * multiplier}px`;
+        bubble.style.left = `${originalBubbleData.left * multiplier}px`;
     };
 
     let currentIndexRight = 0;

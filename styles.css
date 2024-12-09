@@ -162,18 +162,19 @@ html{
     justify-content: end;
 }
 .headerUs{
-    margin-top: 10px;
+    margin-top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 10px;
+    padding-top: 0.2vw;
     height: 60px;
-    font-size: 40px;
 }
 .nameHeaderUs{
     font-family: 'Diphylleia';
     letter-spacing: 0.5px;
-
+    position: absolute;
+    left: 315px;
+    font-size: 40px;
 }
 
 /*kezdetek*/
