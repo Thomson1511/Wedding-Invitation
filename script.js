@@ -203,7 +203,36 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 12, size: 90, img: 'assets/images/AboutUs/Tomi/11.jpg', top: 200, left: 405, focusX: 60, focusY: 20  },
         { id: 13, size: 100, img: 'assets/images/AboutUs/Tomi/12.jpg', top: 295, left: 410, focusX: 40, focusY: 60  },
         { id: 13, size: 110, img: 'assets/images/AboutUs/Tomi/13.jpg', top: 230, left: 500, focusX: 40, focusY: 60  },
-        
+
+        { id: 14, size: 90, img: 'assets/images/AboutUs/Tomi/14.jpg', top: 320, left: 580, focusX: 40, focusY: 60  },
+        { id: 15, size: 100, img: 'assets/images/AboutUs/Tomi/15.jpg', top: 235, left: 640, focusX: 40, focusY: 60  },
+        { id: 16, size: 80, img: 'assets/images/AboutUs/Tomi/16.jpg', top: 340, left: 675, focusX: 40, focusY: 60  },
+        { id: 17, size: 70, img: 'assets/images/AboutUs/Tomi/17.jpg', top: 335, left: 25, focusX: 40, focusY: 60  },
+        { id: 18, size: 85, img: 'assets/images/AboutUs/Tomi/18.jpg', top: 410, left: 0, focusX: 40, focusY: 60  },
+        { id: 19, size: 170, img: 'assets/images/AboutUs/Tomi/19.jpg', top: 340, left: 90, focusX: 40, focusY: 60  },
+        { id: 20, size: 140, img: 'assets/images/AboutUs/Tomi/20.jpg', top: 410, left: 260, focusX: 40, focusY: 60  },
+        { id: 21, size: 90, img: 'assets/images/AboutUs/Tomi/21.jpg', top: 400, left: 400, focusX: 40, focusY: 60  },
+        { id: 22, size: 130, img: 'assets/images/AboutUs/Tomi/22.jpg', top: 460, left: 470, focusX: 40, focusY: 60  },
+        { id: 23, size: 90, img: 'assets/images/AboutUs/Tomi/23.jpg', top: 365, left: 495, focusX: 40, focusY: 60  },
+        { id: 24, size: 120, img: 'assets/images/AboutUs/Tomi/24.jpg', top: 415, left: 595, focusX: 40, focusY: 60  },
+        { id: 25, size: 180, img: 'assets/images/AboutUs/Tomi/25.jpg', top: 495, left: 0, focusX: 40, focusY: 60  },
+        { id: 26, size: 110, img: 'assets/images/AboutUs/Tomi/26.jpg', top: 510, left: 180, focusX: 40, focusY: 60  },
+        { id: 27, size: 140, img: 'assets/images/AboutUs/Tomi/27.jpg', top: 560, left: 280, focusX: 40, focusY: 60  },
+        { id: 28, size: 80, img: 'assets/images/AboutUs/Tomi/28.jpg', top: 500, left: 385, focusX: 40, focusY: 60  },
+        { id: 29, size: 190, img: 'assets/images/AboutUs/Tomi/29.jpg', top: 595, left: 415, focusX: 40, focusY: 60  },
+        { id: 30, size: 150, img: 'assets/images/AboutUs/Tomi/30.jpg', top: 540, left: 590, focusX: 40, focusY: 60  },
+        { id: 31, size: 140, img: 'assets/images/AboutUs/Tomi/31.jpg', top: 700, left: 600, focusX: 40, focusY: 60  },
+        { id: 32, size: 110, img: 'assets/images/AboutUs/Tomi/32.jpeg', top: 680, left: 0, focusX: 40, focusY: 60  },
+        { id: 33, size: 200, img: 'assets/images/AboutUs/Tomi/33.jpg', top: 640, left: 115, focusX: 40, focusY: 60  },
+        { id: 34, size: 80, img: 'assets/images/AboutUs/Tomi/34.jpeg', top: 705, left: 320, focusX: 40, focusY: 60  },
+        { id: 35, size: 90, img: 'assets/images/AboutUs/Tomi/35.jpg', top: 760, left: 380, focusX: 40, focusY: 60  },
+
+        { id: 36, size: 110, img: 'https://via.placeholder.com/150', top: 790, left: 470, focusX: 40, focusY: 60  },
+        { id: 37, size: 70, img: 'https://via.placeholder.com/150', top: 830, left: 580, focusX: 40, focusY: 60  },
+        { id: 38, size: 120, img: 'https://via.placeholder.com/150', top: 790, left: 35, focusX: 40, focusY: 60  },
+        { id: 39, size: 60, img: 'https://via.placeholder.com/150', top: 840, left: 155, focusX: 40, focusY: 60  },
+        { id: 40, size: 70, img: 'https://via.placeholder.com/150', top: 830, left: 240, focusX: 40, focusY: 60  },
+        { id: 41, size: 70, img: 'https://via.placeholder.com/150', top: 790, left: 305, focusX: 40, focusY: 60  },
     ];
 
     const leftBubbles = [
@@ -292,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let previousIndexRight = null;
     let previousIndexLeft = null;
 
-    setInterval(async () => {
+    /*setInterval(async () => {
         const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
         const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
 
@@ -317,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update current indices
         currentIndexRight = (currentIndexRight + 1) % allRightBubbles.length;
         currentIndexLeft = (currentIndexLeft + 1) % allLeftBubbles.length;
-    }, 3000);
+    }, 3000);*/
 });
 
 let people = [
