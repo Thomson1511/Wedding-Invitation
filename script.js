@@ -138,9 +138,9 @@ let autoSlideInterval;
 
 // Funkció a következő képre váltáshoz
 function showNextSlide() {
-    console.log(slides[currentIndex]);
+    //console.log(slides[currentIndex]);
     slides[currentIndex].classList.remove('active');
-    console.log(slides);
+    //console.log(slides);
     currentIndex = (currentIndex + 1) % slides.length;
     slides[currentIndex].classList.add('active');
 }
@@ -407,12 +407,93 @@ let people = [
     {seatNo: 84, Name: "Barni",                         table: "friends"}
 ];
 
+document.addEventListener('DOMContentLoaded', () => {
+    const searchBar = document.getElementById('searchBar');
+    const searchDiv = document.querySelector('.searchDiv');
+    
+    // Létrehozunk egy divet a találatoknak
+    const suggestionsDiv = document.createElement('div');
+    suggestionsDiv.id = 'suggestions';
+    suggestionsDiv.style.position = 'absolute';
+    suggestionsDiv.style.backgroundColor = '#fff';
+    suggestionsDiv.style.border = '1px solid #ccc';
+    suggestionsDiv.style.width = searchBar.offsetWidth + 'px';
+    suggestionsDiv.style.maxHeight = '150px';
+    suggestionsDiv.style.overflowY = 'auto';
+    suggestionsDiv.style.zIndex = '1000';
+    suggestionsDiv.style.display = 'none';
+    searchDiv.appendChild(suggestionsDiv);
+
+    // Keresés kezelése
+    searchBar.addEventListener('input', () => {
+        const query = searchBar.value.toLowerCase().trim();
+        suggestionsDiv.innerHTML = ''; // Töröljük az előző találatokat
+        
+        if (query === '') {
+            suggestionsDiv.style.display = 'none';
+            return;
+        }
+
+        const matches = people.filter(person => person.Name.toLowerCase().includes(query));
+
+        if (matches.length > 0) {
+            matches.forEach(person => {
+                const suggestion = document.createElement('div');
+                suggestion.textContent = person.Name;
+                suggestion.style.padding = '5px';
+                suggestion.style.cursor = 'pointer';
+
+                // Ha rákattintunk, beíródik az input mezőbe, eltüntetjük a seatAllocation div-eket,
+                // és a seat háttérszínét fehérre állítjuk.
+                suggestion.addEventListener('click', () => {
+                    searchBar.value = person.Name;
+                    suggestionsDiv.style.display = 'none';
+
+                    // Eltüntetjük az összes seatAllocation div-et
+                    const seatAllocations = document.querySelectorAll(".seatAllocation");
+                    seatAllocations.forEach(div => div.style.display = "none");
+
+                    const matchingSeatAllocation = document.querySelector(`.seatAllocation.${person.table}`);
+                    if (matchingSeatAllocation) {
+                        matchingSeatAllocation.style.display = "block";
+                    }
+
+                    // Megkeressük a kiválasztott személyhez tartozó seat-ot, és annak háttérszínét fehérre állítjuk
+                    const matchedSeat = document.querySelector(`.seat-${person.seatNo}`);
+                    if (matchedSeat) {
+                        matchedSeat.style.backgroundColor = "white";
+                    }
+                });
+
+                suggestionsDiv.appendChild(suggestion);
+            });
+
+            suggestionsDiv.style.display = 'block';
+        } else {
+            suggestionsDiv.style.display = 'none';
+        }
+    });
+
+    // Klikk bárhova eltünteti a javaslatokat
+    document.addEventListener('click', (e) => {
+        if (e.target !== searchBar && e.target.parentNode !== suggestionsDiv) {
+            suggestionsDiv.style.display = 'none';
+        }
+    });
+});
+
+
 document.getElementById("searchBar").addEventListener("input", function () {
     const searchTerm = this.value.trim().toLowerCase();
     const seatAllocations = document.querySelectorAll(".seatAllocation");
     const seats = document.querySelectorAll(".seat");
 
-    
+    // Ha az input mező üres, minden seatAllocation div megjelenik és a seat színek alapértelmezettek
+    if (searchTerm === "") {
+        seatAllocations.forEach(div => div.style.display = "block");
+        seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
+        return;
+    }
 
     // Keresés a people listában
     const matchedPerson = people.find(person => person.Name.toLowerCase() === searchTerm);
@@ -421,16 +502,22 @@ document.getElementById("searchBar").addEventListener("input", function () {
         // Alaphelyzet: Minden seatAllocation div elrejtése és seat szín visszaállítása
         seatAllocations.forEach(div => div.style.display = "none");
         seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
-        // Megjelenítjük a megfelelő seatAllocation div-et
-        const matchedDiv = document.querySelector(`.seatAllocation.${matchedPerson.table}`);
-        if (matchedDiv) {
-            matchedDiv.style.display = "block";
+
+        // Megjelenítés a talált személynek megfelelő seatAllocation div
+        const matchingSeatAllocation = document.querySelector(`.seatAllocation.${matchedPerson.table}`);
+        if (matchingSeatAllocation) {
+            matchingSeatAllocation.style.display = "block";
         }
 
-        // Megváltoztatjuk az ülés színét
-        const matchedSeat = document.querySelector(`.seat.${matchedPerson.seatNo}`);
-        if (matchedSeat) {
-            matchedSeat.style.backgroundColor = "#fff";
+        // Talált seat színének módosítása
+        const matchingSeat = document.querySelector(`.seat-${matchedPerson.seatNo}`);
+        if (matchingSeat) {
+            matchingSeat.style.backgroundColor = "#FFF";
         }
+    } else {
+        // Ha nincs találat, alapértelmezett stílusok
+        seatAllocations.forEach(div => div.style.display = "block");
+        seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
     }
 });
+
