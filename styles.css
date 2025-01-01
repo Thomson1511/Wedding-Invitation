@@ -199,12 +199,10 @@ html{
 
 .headlineDiv,
 .searchDiv{
-    width: 100vw;
     height: 10vh;
     font-family: 'Diphylleia';
 }
 .seatAllocationDiv{
-    width: 100vw;
     height: 80vh;
     display: flex;
     justify-content: space-around;
@@ -245,8 +243,8 @@ html{
 }
 
 .seat{
-    width: 2vw;
-    height: 2vw;
+    width: 1.9vw;
+    height: 1.9vw;
     background-color: #D9D9D9;
     border-radius: 3vw;
 }

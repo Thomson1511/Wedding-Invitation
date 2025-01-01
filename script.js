@@ -406,3 +406,31 @@ let people = [
     {seatNo: 83, Name: "Mezei Dorina",                  table: "friends"},
     {seatNo: 84, Name: "Barni",                         table: "friends"}
 ];
+
+document.getElementById("searchBar").addEventListener("input", function () {
+    const searchTerm = this.value.trim().toLowerCase();
+    const seatAllocations = document.querySelectorAll(".seatAllocation");
+    const seats = document.querySelectorAll(".seat");
+
+    
+
+    // Keresés a people listában
+    const matchedPerson = people.find(person => person.Name.toLowerCase() === searchTerm);
+
+    if (matchedPerson) {
+        // Alaphelyzet: Minden seatAllocation div elrejtése és seat szín visszaállítása
+        seatAllocations.forEach(div => div.style.display = "none");
+        seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
+        // Megjelenítjük a megfelelő seatAllocation div-et
+        const matchedDiv = document.querySelector(`.seatAllocation.${matchedPerson.table}`);
+        if (matchedDiv) {
+            matchedDiv.style.display = "block";
+        }
+
+        // Megváltoztatjuk az ülés színét
+        const matchedSeat = document.querySelector(`.seat.${matchedPerson.seatNo}`);
+        if (matchedSeat) {
+            matchedSeat.style.backgroundColor = "#fff";
+        }
+    }
+});
