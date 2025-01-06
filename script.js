@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchBar = document.getElementById('searchBar');
     const searchDiv = document.querySelector('.searchDiv');
     
-    // Létrehozunk egy divet a találatoknak
+    // Találatok div létrehozása
     const suggestionsDiv = document.createElement('div');
     suggestionsDiv.id = 'suggestions';
     suggestionsDiv.style.position = 'absolute';
@@ -506,66 +506,98 @@ document.addEventListener('DOMContentLoaded', () => {
     suggestionsDiv.style.maxHeight = '150px';
     suggestionsDiv.style.overflowY = 'auto';
     suggestionsDiv.style.zIndex = '1000';
-    suggestionsDiv.style.display = 'none';
+    suggestionsDiv.style.display = 'none'; // Alapértelmezetten rejtett
+
+    // Elhelyezés a searchDiv-en belül
     searchDiv.appendChild(suggestionsDiv);
 
-    // Keresés kezelése
-    searchBar.addEventListener('input', () => {
-        const query = searchBar.value.toLowerCase().trim();
-        suggestionsDiv.innerHTML = ''; // Töröljük az előző találatokat
-        
-        if (query === '') {
+    // Pozicionálás az inputmezőhöz
+    const positionSuggestions = () => {
+        const rect = searchBar.getBoundingClientRect();
+        suggestionsDiv.style.top = searchBar.offsetTop - suggestionsDiv.offsetHeight + 'px'; // A találatok a mező fölé kerülnek
+        suggestionsDiv.style.left = searchBar.offsetLeft + 'px';
+    };
+    
+    positionSuggestions();
+
+    // Találatok frissítése
+    const updateSuggestions = (query) => {
+        // Tisztítás
+        suggestionsDiv.innerHTML = '';
+        if (!query) {
             suggestionsDiv.style.display = 'none';
             return;
         }
 
-        const matches = people.filter(person => person.Name.toLowerCase().includes(query));
+        // Találatok szűrése
+        const matches = people.filter(person => 
+            person.Name.toLowerCase().includes(query.toLowerCase())
+        );
 
+        // Találatok megjelenítése
         if (matches.length > 0) {
-            matches.forEach(person => {
-                const suggestion = document.createElement('div');
-                suggestion.textContent = person.Name;
-                suggestion.style.padding = '5px';
-                suggestion.style.cursor = 'pointer';
+            matches.forEach(match => {
+                const item = document.createElement('div');
+                if(match.table == "groom"){
+                    item.textContent = `${match.Name} - Vőlegény családja - Ülés: ${match.seatNo}`;
+                }
+                else if(match.table == "bride"){
+                    item.textContent = `${match.Name} - Menyasszony családja - Ülés: ${match.seatNo}`;
+                }
+                else{
+                    item.textContent = `${match.Name} - Fiatalok - Ülés: ${match.seatNo}`;
+                }
+                //item.textContent = `${match.Name} - ${match.table} - Ülés: ${match.seatNo}`;
+                item.style.padding = '5px';
+                item.style.cursor = 'pointer';
+                
 
-                // Ha rákattintunk, beíródik az input mezőbe, eltüntetjük a seatAllocation div-eket,
-                // és a seat háttérszínét fehérre állítjuk.
-                suggestion.addEventListener('click', () => {
-                    searchBar.value = person.Name;
+                // Esemény hozzáadása
+                item.addEventListener('click', () => {
+                    searchBar.value = match.Name;
                     suggestionsDiv.style.display = 'none';
 
                     // Eltüntetjük az összes seatAllocation div-et
                     const seatAllocations = document.querySelectorAll(".seatAllocation");
                     seatAllocations.forEach(div => div.style.display = "none");
 
-                    const matchingSeatAllocation = document.querySelector(`.seatAllocation.${person.table}`);
+                    const matchingSeatAllocation = document.querySelector(`.seatAllocation.${match.table}`);
                     if (matchingSeatAllocation) {
                         matchingSeatAllocation.style.display = "block";
                     }
 
-                    // Megkeressük a kiválasztott személyhez tartozó seat-ot, és annak háttérszínét fehérre állítjuk
-                    const matchedSeat = document.querySelector(`.seat-${person.seatNo}`);
+                    const matchedSeat = document.querySelector(`.seat-${match.seatNo}`);
                     if (matchedSeat) {
                         matchedSeat.style.backgroundColor = "white";
                     }
                 });
 
-                suggestionsDiv.appendChild(suggestion);
+                suggestionsDiv.appendChild(item);
             });
-
             suggestionsDiv.style.display = 'block';
+            positionSuggestions();
         } else {
             suggestionsDiv.style.display = 'none';
         }
+    };
+
+    // Input események
+    searchBar.addEventListener('input', (e) => {
+        const query = e.target.value;
+        updateSuggestions(query);
     });
 
-    // Klikk bárhova eltünteti a javaslatokat
-    document.addEventListener('click', (e) => {
-        if (e.target !== searchBar && e.target.parentNode !== suggestionsDiv) {
+    // Elrejtés, ha az inputmező elhagyása történik
+    searchBar.addEventListener('blur', () => {
+        setTimeout(() => {
             suggestionsDiv.style.display = 'none';
-        }
+        }, 200); // Késleltetés a kattintás érzékelése miatt
     });
+
+    // Újraméretezés esetén a pozíció frissítése
+    window.addEventListener('resize', positionSuggestions);
 });
+
 
 
 document.getElementById("searchBar").addEventListener("input", function () {
