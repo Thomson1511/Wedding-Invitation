@@ -616,15 +616,17 @@ document.getElementById("searchBar").addEventListener("input", function () {
     const matchedPerson = people.find(person => person.Name.toLowerCase() === searchTerm);
 
     if (matchedPerson) {
-        // Alaphelyzet: Minden seatAllocation div elrejtése és seat szín visszaállítása
-        seatAllocations.forEach(div => div.style.display = "none");
-        seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
+        // Csak azok a seatAllocation div-ek jelennek meg, amelyek megfelelnek a talált személy táblájának
+        seatAllocations.forEach(div => {
+            if (div.classList.contains(matchedPerson.table)) {
+                div.style.display = "block";
+            } else {
+                div.style.display = "none";
+            }
+        });
 
-        // Megjelenítés a talált személynek megfelelő seatAllocation div
-        const matchingSeatAllocation = document.querySelector(`.seatAllocation.${matchedPerson.table}`);
-        if (matchingSeatAllocation) {
-            matchingSeatAllocation.style.display = "block";
-        }
+        // Alaphelyzet: Minden seat szín visszaállítása
+        seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
 
         // Talált seat színének módosítása
         const matchingSeat = document.querySelector(`.seat-${matchedPerson.seatNo}`);
@@ -637,4 +639,6 @@ document.getElementById("searchBar").addEventListener("input", function () {
         seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
     }
 });
+
+
 

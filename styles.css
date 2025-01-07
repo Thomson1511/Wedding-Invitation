@@ -304,6 +304,9 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
 
 
 
+
+
+
 *,
 *:before,
 *:after {
@@ -597,7 +600,7 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
         width: 90vw;
     }
     nav{
-        width: 90vw;
+        width: 95vw;
     }
     #home{
         background-image: url('assets/images/valami2.jpg');
