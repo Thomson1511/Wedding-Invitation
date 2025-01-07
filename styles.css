@@ -302,6 +302,18 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
 }
 
 
+.seatAllocation {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.seatAllocationDiv {
+    transition: justify-content 3s ease;
+}
+
+
+
 
 
 
