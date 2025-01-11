@@ -1,4 +1,4 @@
-var countDownDate = new Date("Aug 09, 2025 14:00:00").getTime();
+var countDownDate = new Date("Aug 09, 2025 13:00:00").getTime();
 var x = setInterval(function(){
     var now = new Date().getTime();
     var distance = countDownDate - now;
@@ -569,6 +569,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const matchedSeat = document.querySelector(`.seat-${match.seatNo}`);
                     if (matchedSeat) {
                         matchedSeat.style.backgroundColor = "white";
+                        matchedSeat.style.border = "1px solid black";
                     }
                 });
 
@@ -604,11 +605,48 @@ document.getElementById("searchBar").addEventListener("input", function () {
     const searchTerm = this.value.trim().toLowerCase();
     const seatAllocations = document.querySelectorAll(".seatAllocation");
     const seats = document.querySelectorAll(".seat");
+    const forBride = document.querySelectorAll(".forBride");
+    const forGroom = document.querySelectorAll(".forGroom");
+    const forFriends = document.querySelectorAll(".forFriends");
+    
+
+    function displayNamesDiv(who){
+        who.forEach(element => {
+            element.style.display = "flex";
+            element.style.flexDirection = "column";
+            element.style.justifyContent = "space-around";
+            element.style.height = "72vh";
+            element.style.width = "15vw";
+            element.style.fontSize = "1vw";
+        });
+    }
+
+    function hideNamesDiv() {
+        // Elrejti a nevekhez tartozó div-eket
+        forBride.forEach(element => element.style.display = "none");
+        forGroom.forEach(element => element.style.display = "none");
+        forFriends.forEach(element => element.style.display = "none");
+    
+        // Visszaállítja a seatAllocation, tableAndSeat, és seatAllocationHead szélességét
+        const tableAndSeats = document.querySelectorAll(".tableAndSeat");
+        const seatAllocationHeads = document.querySelectorAll(".seatAllocationHead");
+        const seatAllocations = document.querySelectorAll(".seatAllocation");
+    
+        tableAndSeats.forEach(element => element.style.width = "25vw");
+        seatAllocationHeads.forEach(element => element.style.width = "25vw");
+        seatAllocations.forEach(element => element.style.width = "25vw");
+    }
+
+    function resetSeats(){
+        seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
+        seats.forEach(seat => seat.style.border = "none");
+    }
 
     // Ha az input mező üres, minden seatAllocation div megjelenik és a seat színek alapértelmezettek
     if (searchTerm === "") {
         seatAllocations.forEach(div => div.style.display = "block");
-        seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
+        hideNamesDiv();
+        resetSeats();
         return;
     }
 
@@ -620,27 +658,130 @@ document.getElementById("searchBar").addEventListener("input", function () {
         seatAllocations.forEach(div => {
             if (div.classList.contains(matchedPerson.table)) {
                 div.style.display = "block";
+                div.style.width = "50vw";
+
+                const tableAndSeat = div.querySelector(".tableAndSeat");
+                const seatAllocationHead = div.querySelector(".seatAllocationHead");
+
+                tableAndSeat.style.width = "50vw";
+                seatAllocationHead.style.width = "50vw";
             } else {
                 div.style.display = "none";
+            }
+            if(matchedPerson.table == "groom"){
+                displayNamesDiv(forGroom);
+            }
+            else if(matchedPerson.table == "bride"){
+                displayNamesDiv(forBride);
+            }
+            else{
+                displayNamesDiv(forFriends);
             }
         });
 
         // Alaphelyzet: Minden seat szín visszaállítása
-        seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
+        resetSeats();
 
         // Talált seat színének módosítása
         const matchingSeat = document.querySelector(`.seat-${matchedPerson.seatNo}`);
         if (matchingSeat) {
             matchingSeat.style.backgroundColor = "#FFF";
+            matchingSeat.style.border = "1px solid black";
         }
     } else {
         // Ha nincs találat, alapértelmezett stílusok
         seatAllocations.forEach(div => div.style.display = "block");
-        seats.forEach(seat => seat.style.backgroundColor = "#D9D9D9");
+        hideNamesDiv();
+        resetSeats();
     }
 });
 
 
+function displayNames() {
+    // Kategóriákhoz tartozó div-ek
+    const groomDivs = document.querySelectorAll(".forGroom");
+    const brideDivs = document.querySelectorAll(".forBride");
+    const friendsDivs = document.querySelectorAll(".forFriends");
+
+    // Táblákhoz tartozó emberek neveinek szűrése
+    const groomNames = people.filter(person => person.table === "groom");
+    const brideNames = people.filter(person => person.table === "bride");
+    const friendsNames = people.filter(person => person.table === "friends");
+
+    // Nevek feltöltése Vőlegény családjának asztalához (különböző oldalak)
+    if (groomDivs.length === 2) {
+        fillDivWithNames(groomDivs[0], groomNames.slice(0, 12), "right"); // Első oldal
+        fillDivWithNames(groomDivs[1], groomNames.slice(12), "left");    // Második oldal
+    }
+
+    // Nevek feltöltése Menyasszony családjának asztalához
+    if (brideDivs.length === 2) {
+        fillDivWithNames(brideDivs[0], brideNames.slice(0, 12), "right"); // Első oldal
+        fillDivWithNames(brideDivs[1], brideNames.slice(12), "left");    // Második oldal
+    }
+
+    // Nevek feltöltése Fiatalok asztalához
+    if (friendsDivs.length === 2) {
+        fillDivWithNames(friendsDivs[0], friendsNames.slice(0, 17), "right"); // Első oldal
+        fillDivWithNames(friendsDivs[1], friendsNames.slice(17), "left");    // Második oldal
+    }
+}
+
+// Helper function: Nevek feltöltése a megfelelő div-be
+function fillDivWithNames(div, names, alignment) {
+    div.innerHTML = ""; // Törli a korábbi tartalmat
+    div.style.textAlign = alignment; // Igazítás beállítása (right vagy left)
+    names.forEach(person => {
+        const nameDiv = document.createElement("div");
+        nameDiv.textContent = person.Name; // Nevet hozzáadja
+        div.appendChild(nameDiv); // Hozzáfűzi a div-hez
+    });
+}
+
+// Meghívja a displayNames függvényt az oldal betöltésekor
+document.addEventListener("DOMContentLoaded", displayNames);
+
+let lastPerson = "";
+
+function highlightName() {
+    const searchTerm = document.getElementById("searchBar").value.trim().toLowerCase();
+    
+    // Keresés a people listában
+    const matchedPerson = people.find(person => person.Name.toLowerCase() === searchTerm);
+
+    // Ha van utolsó személy és a keresett név már nem szerepel, fehérre állítja
+    if (lastPerson && !searchTerm) {
+        const seatAllocations = document.querySelectorAll(".seatAllocation");
+        seatAllocations.forEach(div => {
+            const nameDivs = div.querySelectorAll("div");
+            nameDivs.forEach(nameDiv => {
+                if (nameDiv.textContent.trim().toLowerCase() === lastPerson) {
+                    nameDiv.style.color = "white";
+                }
+            });
+        });
+        lastPerson = ""; // Reset the last person
+    }
+
+    if (matchedPerson) {
+        // Ellenőrzi, hogy megtalálható-e a név a seatAllocation div-ekben
+        const seatAllocations = document.querySelectorAll(".seatAllocation");
+        seatAllocations.forEach(div => {
+            const nameDivs = div.querySelectorAll("div");
+
+            nameDivs.forEach(nameDiv => {
+                // Ha a div szövege megegyezik a keresett névvel, feketére állítja
+                if (nameDiv.textContent.trim().toLowerCase() === matchedPerson.Name.toLowerCase()) {
+                    nameDiv.style.color = "black";
+                    lastPerson = matchedPerson.Name.toLowerCase();
+                }
+            });
+        });
+    }
+}
+
+// Meghívás a keresés alapján
+document.getElementById("searchBar").addEventListener("input", highlightName);
 
 
 
