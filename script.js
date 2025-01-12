@@ -548,6 +548,12 @@ document.addEventListener('DOMContentLoaded', () => {
             person.Name.toLowerCase().includes(query.toLowerCase())
         );
 
+        const exactMatch = people.find(person => person.Name.toLowerCase() === query.toLowerCase());
+        if (exactMatch) {
+            suggestionsDiv.style.display = 'none';
+            return;
+        }
+
         // Találatok megjelenítése
         if (matches.length > 0) {
             matches.forEach(match => {
@@ -632,24 +638,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', positionSuggestions);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 document.getElementById("searchBar").addEventListener("input", function () {
     const searchTerm = this.value.trim().toLowerCase();
     const seatAllocations = document.querySelectorAll(".seatAllocation");
@@ -658,9 +646,6 @@ document.getElementById("searchBar").addEventListener("input", function () {
     const forGroom = document.querySelectorAll(".forGroom");
     const forFriends = document.querySelectorAll(".forFriends");
     
-
-    
-
     function hideNamesDiv() {
         // Elrejti a nevekhez tartozó div-eket
         forBride.forEach(element => element.style.display = "none");
@@ -823,5 +808,3 @@ function highlightName() {
 
 // Meghívás a keresés alapján
 document.getElementById("searchBar").addEventListener("input", highlightName);
-
-
