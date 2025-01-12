@@ -318,7 +318,18 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
     font-family: 'Libre-Regular', Arial, Helvetica, sans-serif;
 }
 
-
+.links,
+#home,
+#locations,
+#us,
+#gallery,
+.headlineDiv,
+.seatAllocationDiv
+{
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
 
 
 
