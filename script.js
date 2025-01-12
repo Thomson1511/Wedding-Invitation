@@ -492,9 +492,32 @@ let people = [
     {seatNo: 84, Name: "Barni",                         table: "friends"}
 ];
 
+function displayNamesDiv(who){
+    who.forEach(element => {
+        element.style.display = "flex";
+        element.style.flexDirection = "column";
+        element.style.justifyContent = "space-around";
+        element.style.height = "72vh";
+        element.style.width = "15vw";
+        element.style.fontSize = "1vw";
+    });
+}
+
+
+
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const searchBar = document.getElementById('searchBar');
     const searchDiv = document.querySelector('.searchDiv');
+    const forBride = document.querySelectorAll(".forBride");
+    const forGroom = document.querySelectorAll(".forGroom");
+    const forFriends = document.querySelectorAll(".forFriends");
     
     // Találatok div létrehozása
     const suggestionsDiv = document.createElement('div');
@@ -555,6 +578,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Esemény hozzáadása
                 item.addEventListener('click', () => {
                     searchBar.value = match.Name;
+                    const inputEvent = new Event('input'); // Új input esemény létrehozása
+                    searchBar.dispatchEvent(inputEvent); // Esemény kiváltása
                     suggestionsDiv.style.display = 'none';
 
                     // Eltüntetjük az összes seatAllocation div-et
@@ -564,7 +589,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     const matchingSeatAllocation = document.querySelector(`.seatAllocation.${match.table}`);
                     if (matchingSeatAllocation) {
                         matchingSeatAllocation.style.display = "block";
+                        matchingSeatAllocation.style.width = "50vw";
+
+                        const tableAndSeat = matchingSeatAllocation.querySelector(".tableAndSeat");
+                        const seatAllocationHead = matchingSeatAllocation.querySelector(".seatAllocationHead");
+
+                        tableAndSeat.style.width = "50vw";
+                        seatAllocationHead.style.width = "50vw";
+                        if(match.table == "groom"){
+                            displayNamesDiv(forGroom);
+                        }
+                        else if(match.table == "bride"){
+                            displayNamesDiv(forBride);
+                        }
+                        else{
+                            displayNamesDiv(forFriends);
+                        }
                     }
+                    
 
                     const matchedSeat = document.querySelector(`.seat-${match.seatNo}`);
                     if (matchedSeat) {
@@ -601,6 +643,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 document.getElementById("searchBar").addEventListener("input", function () {
     const searchTerm = this.value.trim().toLowerCase();
     const seatAllocations = document.querySelectorAll(".seatAllocation");
@@ -610,16 +668,7 @@ document.getElementById("searchBar").addEventListener("input", function () {
     const forFriends = document.querySelectorAll(".forFriends");
     
 
-    function displayNamesDiv(who){
-        who.forEach(element => {
-            element.style.display = "flex";
-            element.style.flexDirection = "column";
-            element.style.justifyContent = "space-around";
-            element.style.height = "72vh";
-            element.style.width = "15vw";
-            element.style.fontSize = "1vw";
-        });
-    }
+    
 
     function hideNamesDiv() {
         // Elrejti a nevekhez tartozó div-eket
@@ -750,7 +799,8 @@ function highlightName() {
     const matchedPerson = people.find(person => person.Name.toLowerCase() === searchTerm);
 
     // Ha van utolsó személy és a keresett név már nem szerepel, fehérre állítja
-    if (lastPerson && !searchTerm) {
+    if (lastPerson && lastPerson != matchedPerson) {
+        
         const seatAllocations = document.querySelectorAll(".seatAllocation");
         seatAllocations.forEach(div => {
             const nameDivs = div.querySelectorAll("div");
@@ -782,6 +832,5 @@ function highlightName() {
 
 // Meghívás a keresés alapján
 document.getElementById("searchBar").addEventListener("input", highlightName);
-
 
 
