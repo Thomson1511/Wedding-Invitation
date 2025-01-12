@@ -17,6 +17,14 @@
     font-family: Nautigal;
     src: url(assets/fonts/TheNautigal-Regular.ttf);
 }
+@font-face {
+    font-family: Libre-Bold;
+    src: url(assets/fonts/LibreBaskerville-Bold.ttf);
+}
+@font-face {
+    font-family: Libre-Regular;
+    src: url(assets/fonts/LibreBaskerville-Regular.ttf);
+}
 
 /*#endregion*/
 
@@ -200,7 +208,7 @@ html{
 .headlineDiv,
 .searchDiv{
     height: 10vh;
-    font-family: 'Diphylleia';
+    font-family: 'Libre-Regular', Arial, Helvetica, sans-serif;
 }
 .seatAllocationDiv{
     height: 80vh;
@@ -269,6 +277,7 @@ html{
     height: 8vh;
     border: 2px solid black;
     border-radius: 10px;
+    font-family: 'Libre-Regular', Arial, Helvetica, sans-serif;
 }
 
 #searchBar::placeholder {
@@ -306,7 +315,7 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
 .forFriends{
     display: none;
     color: white;
-    font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
+    font-family: 'Libre-Regular', Arial, Helvetica, sans-serif;
 }
 
 

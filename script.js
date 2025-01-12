@@ -420,8 +420,8 @@ let people = [
     {seatNo: 12, Name: "Zenész",                        table: "groom"},
     {seatNo: 13, Name: "Torákné Kovács Krisztina",      table: "groom"},
     {seatNo: 14, Name: "Torák Vencel Lőrinc",           table: "groom"},
-    {seatNo: 15, Name: "Torák Lörinc",                  table: "groom"},
-    {seatNo: 16, Name: "Ildikó",                        table: "groom"},
+    {seatNo: 15, Name: "Torák Lőrinc",                  table: "groom"},
+    {seatNo: 16, Name: "Torákné Gyurcsik Ildikó",       table: "groom"},
     {seatNo: 17, Name: "Torák Pál",                     table: "groom"},
     {seatNo: 18, Name: "Mezei Krisztián",               table: "groom"},
     {seatNo: 19, Name: "Mezei Krisztiánné",             table: "groom"},
@@ -430,7 +430,7 @@ let people = [
     {seatNo: 22, Name: "Vékony Csaba",                  table: "groom"},
     {seatNo: 23, Name: "Vékonyné Gecse Mariann",        table: "groom"},
     {seatNo: 24, Name: "Vékony Kiara",                  table: "groom"},
-    {seatNo: 25, Name: "Hemző László vőféj",            table: "groom"},
+    {seatNo: 25, Name: "Hemző László vőfély",           table: "groom"},
     {seatNo: 26, Name: "Áron atya",                     table: "groom"},
     {seatNo: 27, Name: "Keresztapa",                    table: "bride"},
     {seatNo: 28, Name: "Keresztanya",                   table: "bride"},
@@ -502,15 +502,6 @@ function displayNamesDiv(who){
         element.style.fontSize = "1vw";
     });
 }
-
-
-
-
-
-
-
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const searchBar = document.getElementById('searchBar');
