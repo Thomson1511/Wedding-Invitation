@@ -204,6 +204,16 @@ html{
 #locations{
     min-height: 100vh;
 }
+#photoLink{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    font-size: 2.5vh;
+    color: #6b6b6b;
+    font-family: 'Diphylleia';
+    flex-direction: column;
+}
 
 .headlineDiv,
 .searchDiv{
