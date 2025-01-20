@@ -215,6 +215,27 @@ html{
     flex-direction: column;
 }
 
+.downloadPng{
+    display: flex;
+    justify-content: end;
+    width: 75vw;
+}
+
+#seatsForMobile{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+    font-size: 2.2vh;
+    color: #6b6b6b;
+    font-family: 'Diphylleia';
+    flex-direction: column;
+}
+
+.downloadHeader{
+    color: black;
+}
+
 .headlineDiv,
 .searchDiv{
     height: 10vh;

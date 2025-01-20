@@ -187,6 +187,11 @@ startAutoSlide();
 document.addEventListener('DOMContentLoaded', () => {
     const rightBubbleContainer = document.querySelector('.bubble-container.right-bubbles');
     const leftBubbleContainer = document.querySelector('.bubble-container.left-bubbles');
+    const headerUs = document.querySelectorAll('.headerUs');
+    const leftHeader = document.getElementById("leftHead");
+    const rightHeader = document.getElementById("rightHead");
+    const screenWidth = window.innerWidth;
+    const usSection = document.querySelector('#us');
 
     const rightBubbles = [
         { id: 1, size: 120, img: 'assets/images/AboutUs/Tomi/1.jpg', top: 20, left: 20,     focusX: 20, focusY: 20 },
@@ -297,114 +302,199 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 102, size: 125,    img: 'assets/images/AboutUs/Viki/51.jpg', top: 785, left: 590, focusX: 0, focusY: 10  }
     ];
 
-    const getScreenMultiplier = () => {
-        const screenWidth = window.innerWidth;
-        if (screenWidth >= 1920) return 1;
-        else if (screenWidth >= 1820 && screenWidth < 1920) return 0.98;
-        else if (screenWidth >= 1720 && screenWidth < 1820) return 0.93;
-        else if (screenWidth >= 1620 && screenWidth < 1720) return 0.88;
-        else if (screenWidth >= 1520 && screenWidth < 1620) return 0.82;
-        else if (screenWidth >= 1420 && screenWidth < 1520) return 0.77;
-        else if (screenWidth >= 1320 && screenWidth < 1420) return 0.71;
-        else if (screenWidth >= 1220 && screenWidth < 1320) return 0.66;
-        else if (screenWidth >= 1120 && screenWidth < 1220) return 0.61;
-        else if (screenWidth >= 1020 && screenWidth < 1120) return 0.53;
-        return 0.50; // Default for smaller screens
-    };
-
-    const leftHeader = document.getElementById("leftHead");
-    const rightHeader = document.getElementById("rightHead");
-
-    const multiplier = getScreenMultiplier();
-
-    leftHeader.style.left = 315 * multiplier;
-    leftHeader.style.fontSize = 40 * multiplier;
-    rightHeader.style.left = 315 * multiplier;
-    rightHeader.style.fontSize = 40 * multiplier;
-
-    const createBubbles = (container, bubbles) => {
-        const multiplier = getScreenMultiplier();
-        bubbles.forEach((bubble) => {
-            const bubbleElement = document.createElement('div');
-            bubbleElement.classList.add('bubble');
-            bubbleElement.style.width = `${bubble.size * multiplier}px`;
-            bubbleElement.style.height = `${bubble.size * multiplier}px`;
-            bubbleElement.style.background = `url(${bubble.img}) no-repeat center/cover`;
-            bubbleElement.style.backgroundPosition = `${bubble.focusX}% ${bubble.focusY}%`;
-            bubbleElement.style.top = `${bubble.top * multiplier}px`;
-            bubbleElement.style.left = `${bubble.left * multiplier}px`;
-            bubbleElement.style.position = 'absolute';
-
-            container.appendChild(bubbleElement);
+    if (screenWidth < 1350) {
+        //ide kell a telós
+        usSection.style.flexDirection = "column";
+        usSection.style.justifyContent = "space-around";
+        rightBubbleContainer.style.height = "40vh";
+        rightBubbleContainer.style.width = "100vw";
+        leftBubbleContainer.style.height = "40vh";
+        leftBubbleContainer.style.width = "100vw";
+        headerUs.forEach((headerUs) => {
+            headerUs.style.display = "none";
         });
-    };
 
-    createBubbles(rightBubbleContainer, rightBubbles);
-    createBubbles(leftBubbleContainer, leftBubbles);
 
-    // Define fixed center positions
-    const usSection = document.querySelector('#us');
-    const usSectionHeight = usSection.offsetHeight;
-    const verticalCenter = (usSectionHeight / 2) - 160;
+        let rightCurrentIndex = 0;
+        let leftCurrentIndex = 0;
+    
+        // Create img elements for both containers
+        const rightImgElement = document.createElement('img');
+        rightImgElement.style.width = '100%';
+        rightImgElement.style.height = '100%';
+        rightImgElement.style.objectFit = 'cover';
+        rightBubbleContainer.appendChild(rightImgElement);
+    
+        const leftImgElement = document.createElement('img');
+        leftImgElement.style.width = '100%';
+        leftImgElement.style.height = '100%';
+        leftImgElement.style.objectFit = 'cover';
+        leftBubbleContainer.appendChild(leftImgElement);
+    
+        // Function to update the right image
+        const updateRightImage = () => {
+            const currentRightBubble = rightBubbles[rightCurrentIndex];
+            rightImgElement.src = currentRightBubble.img;
+            rightCurrentIndex = (rightCurrentIndex + 1) % rightBubbles.length;
+        };
+    
+        // Function to update the left image
+        const updateLeftImage = () => {
+            const currentLeftBubble = leftBubbles[leftCurrentIndex];
+            leftImgElement.src = currentLeftBubble.img;
+            leftCurrentIndex = (leftCurrentIndex + 1) % leftBubbles.length;
+        };
+    
+        // Initial image load
+        updateRightImage();
+        updateLeftImage();
+    
+        // Change images every 2 seconds
+        setInterval(updateRightImage, 3000);
+        setInterval(updateLeftImage, 3000);
 
-    const rightCenter = { x: 0, y: verticalCenter };
-    const leftContainerWidth = leftBubbleContainer.offsetWidth;
-    const leftCenter = { x: leftContainerWidth - 400, y: verticalCenter }; // Updated to align the bubble's right edge with the container's right edge
-
-    const highlightBubble = (bubble, centerPosition) => {
-        bubble.style.transition = 'all 1s ease-in-out';
-        bubble.style.left = `${centerPosition.x}px`;
-        bubble.style.top = `${centerPosition.y - bubble.offsetHeight / 2}px`;
-        bubble.style.width = '400px';
-        bubble.style.height = '400px';
-        bubble.style.zIndex = 10;
-    };
-
-    const resetBubble = (bubble, originalBubbleData) => {
+    } else {
+        const getScreenMultiplier = () => {
+            const screenWidth = window.innerWidth;
+            if (screenWidth >= 1920) return 1;
+            else if (screenWidth >= 1820 && screenWidth < 1920) return 0.98;
+            else if (screenWidth >= 1720 && screenWidth < 1820) return 0.93;
+            else if (screenWidth >= 1620 && screenWidth < 1720) return 0.88;
+            else if (screenWidth >= 1520 && screenWidth < 1620) return 0.82;
+            else if (screenWidth >= 1420 && screenWidth < 1520) return 0.77;
+            else if (screenWidth >= 1320 && screenWidth < 1420) return 0.71;
+            else if (screenWidth >= 1220 && screenWidth < 1320) return 0.66;
+            else if (screenWidth >= 1120 && screenWidth < 1220) return 0.61;
+            else if (screenWidth >= 1020 && screenWidth < 1120) return 0.53;
+            return 0.50; // Default for smaller screens
+        };
+    
+    
         const multiplier = getScreenMultiplier();
-        bubble.style.transition = ''; // Remove animation
-        bubble.style.width = `${originalBubbleData.size * multiplier}px`;
-        bubble.style.height = `${originalBubbleData.size * multiplier}px`;
-        bubble.style.zIndex = 1;
-        bubble.style.top = `${originalBubbleData.top * multiplier}px`;
-        bubble.style.left = `${originalBubbleData.left * multiplier}px`;
-    };
+    
+        leftHeader.style.left = 315 * multiplier;
+        leftHeader.style.fontSize = 40 * multiplier;
+        rightHeader.style.left = 315 * multiplier;
+        rightHeader.style.fontSize = 40 * multiplier;
+    
+        const createBubbles = (container, bubbles) => {
+            const multiplier = getScreenMultiplier();
+            bubbles.forEach((bubble) => {
+                const bubbleElement = document.createElement('div');
+                bubbleElement.classList.add('bubble');
+                bubbleElement.style.width = `${bubble.size * multiplier}px`;
+                bubbleElement.style.height = `${bubble.size * multiplier}px`;
+                bubbleElement.style.background = `url(${bubble.img}) no-repeat center/cover`;
+                bubbleElement.style.backgroundPosition = `${bubble.focusX}% ${bubble.focusY}%`;
+                bubbleElement.style.top = `${bubble.top * multiplier}px`;
+                bubbleElement.style.left = `${bubble.left * multiplier}px`;
+                bubbleElement.style.position = 'absolute';
+    
+                container.appendChild(bubbleElement);
+            });
+        };
+    
+        createBubbles(rightBubbleContainer, rightBubbles);
+        createBubbles(leftBubbleContainer, leftBubbles);
+    
+        // Define fixed center positions
+        
+        const usSectionHeight = usSection.offsetHeight;
+        const verticalCenter = (usSectionHeight / 2) - 160;
+    
+        const rightCenter = { x: 0, y: verticalCenter };
+        const leftContainerWidth = leftBubbleContainer.offsetWidth;
+        const leftCenter = { x: leftContainerWidth - 400, y: verticalCenter }; // Updated to align the bubble's right edge with the container's right edge
+    
+        const highlightBubble = (bubble, centerPosition) => {
+            bubble.style.transition = 'all 1s ease-in-out';
+            bubble.style.left = `${centerPosition.x}px`;
+            bubble.style.top = `${centerPosition.y - bubble.offsetHeight / 2}px`;
+            bubble.style.width = '400px';
+            bubble.style.height = '400px';
+            bubble.style.zIndex = 10;
+        };
+    
+        const resetBubble = (bubble, originalBubbleData) => {
+            const multiplier = getScreenMultiplier();
+            bubble.style.transition = ''; // Remove animation
+            bubble.style.width = `${originalBubbleData.size * multiplier}px`;
+            bubble.style.height = `${originalBubbleData.size * multiplier}px`;
+            bubble.style.zIndex = 1;
+            bubble.style.top = `${originalBubbleData.top * multiplier}px`;
+            bubble.style.left = `${originalBubbleData.left * multiplier}px`;
+        };
+    
+        const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    
+        let currentIndexRight = 0;
+        let currentIndexLeft = 0;
+        let previousIndexRight = null;
+        let previousIndexLeft = null;
+    
+        setInterval(async () => {
+            const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
+            const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
+    
+            // Reset previous bubbles
+            if (previousIndexRight !== null) {
+                resetBubble(allRightBubbles[previousIndexRight], rightBubbles[previousIndexRight]);
+            }
+            if (previousIndexLeft !== null) {
+                resetBubble(allLeftBubbles[previousIndexLeft], leftBubbles[previousIndexLeft]);
+            }
+    
+            await wait(1000);
+    
+            // Highlight current bubbles
+            highlightBubble(allRightBubbles[currentIndexRight], rightCenter);
+            highlightBubble(allLeftBubbles[currentIndexLeft], leftCenter);
+    
+            // Update previous indices
+            previousIndexRight = currentIndexRight;
+            previousIndexLeft = currentIndexLeft;
+    
+            // Update current indices
+            currentIndexRight = (currentIndexRight + 1) % allRightBubbles.length;
+            currentIndexLeft = (currentIndexLeft + 1) % allLeftBubbles.length;
+        }, 3000);
+    }
 
-    const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    
 
-    let currentIndexRight = 0;
-    let currentIndexLeft = 0;
-    let previousIndexRight = null;
-    let previousIndexLeft = null;
-
-    setInterval(async () => {
-        const allRightBubbles = document.querySelectorAll('.bubble-container.right-bubbles .bubble');
-        const allLeftBubbles = document.querySelectorAll('.bubble-container.left-bubbles .bubble');
-
-        // Reset previous bubbles
-        if (previousIndexRight !== null) {
-            resetBubble(allRightBubbles[previousIndexRight], rightBubbles[previousIndexRight]);
-        }
-        if (previousIndexLeft !== null) {
-            resetBubble(allLeftBubbles[previousIndexLeft], leftBubbles[previousIndexLeft]);
-        }
-
-        await wait(1000);
-
-        // Highlight current bubbles
-        highlightBubble(allRightBubbles[currentIndexRight], rightCenter);
-        highlightBubble(allLeftBubbles[currentIndexLeft], leftCenter);
-
-        // Update previous indices
-        previousIndexRight = currentIndexRight;
-        previousIndexLeft = currentIndexLeft;
-
-        // Update current indices
-        currentIndexRight = (currentIndexRight + 1) % allRightBubbles.length;
-        currentIndexLeft = (currentIndexLeft + 1) % allLeftBubbles.length;
-    }, 3000);
 });
 
+//Ülésrend
+
+const seatsSection = document.getElementById("seats");
+const seatsForMobileSection = document.getElementById("seatsForMobile");
+
+function checkScreenWidth() {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth < 1350) {
+        seatsSection.style.display = "none";
+        seatsForMobileSection.style.display = "flex";
+
+        document.querySelectorAll('.download-link').forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault(); // Alapértelmezett működés letiltása
+    
+                const imagePath = event.target.dataset.image; // Az adat attribútumból kapjuk meg a kép útvonalát
+    
+                // Letöltési folyamat elindítása
+                const anchor = document.createElement('a');
+                anchor.href = imagePath;
+                anchor.download = imagePath.split('/').pop(); // A fájlnév kivonása az útvonalból
+                document.body.appendChild(anchor);
+                anchor.click();
+                document.body.removeChild(anchor);
+            });
+        });
+    } else {
+        seatsSection.style.display = "block";
+        seatsForMobileSection.style.display = "none";
+        
 let people = [
     {seatNo: 1,  Name: "Horváth Franciska",             table: "groom"},
     {seatNo: 2,  Name: "Semsei Péter",                  table: "groom"},
@@ -808,3 +898,11 @@ function highlightName() {
 
 // Meghívás a keresés alapján
 document.getElementById("searchBar").addEventListener("input", highlightName);
+
+    }
+}
+
+checkScreenWidth();
+
+// Ellenőrzés az ablak méretezésekor
+window.addEventListener('resize', checkScreenWidth);
