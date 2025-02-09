@@ -196,18 +196,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const rightBubbles = [
         { id: 1, size: 120, img: 'assets/images/AboutUs/Tomi/1.jpg', top: 20, left: 20,     focusX: 20, focusY: 20 },
         { id: 2, size: 85, img: 'assets/images/AboutUs/Tomi/2.jpg', top: 5, left: 140,      focusX: 40, focusY: 60  },
-        { id: 3, size: 150, img: 'https://via.placeholder.com/150', top: 95, left: 120,     focusX: 40, focusY: 40 },
+        { id: 3, size: 150, img: '', top: 95, left: 120,     focusX: 40, focusY: 40 },
         { id: 4, size: 80, img: 'assets/images/AboutUs/Tomi/3.jpg', top: 10, left: 230,     focusX: 0, focusY: 20  },
         { id: 5, size: 140, img: 'assets/images/AboutUs/Tomi/4.jpg', top: 70, left: 270,    focusX: 40, focusY: 60  },
         { id: 6, size: 100, img: 'assets/images/AboutUs/Tomi/5.jpg', top: 8, left: 440,     focusX: 60, focusY: 60  },
-        { id: 7, size: 60, img: 'https://via.placeholder.com/60', top: 2, left: 540,        focusX: 60, focusY: 60  },
+        { id: 7, size: 60, img: '', top: 2, left: 540,        focusX: 60, focusY: 60  },
         { id: 8, size: 70, img: 'assets/images/AboutUs/Tomi/6.jpg', top: 110, left: 415,    focusX: 60, focusY: 0  },
-        { id: 9, size: 70, img: 'https://via.placeholder.com/70', top: 170, left: 475,      focusX: 60, focusY: 0  },
-        { id: 10, size: 60, img: 'https://via.placeholder.com/60', top: 105, left: 490,     focusX: 60, focusY: 0  },
+        { id: 9, size: 70, img: '', top: 170, left: 475,      focusX: 60, focusY: 0  },
+        { id: 10, size: 60, img: '', top: 105, left: 490,     focusX: 60, focusY: 0  },
         { id: 11, size: 190, img: 'assets/images/AboutUs/Tomi/7.jpg', top: 45, left: 555,   focusX: 60, focusY: 60  },
         { id: 12, size: 110, img: 'assets/images/AboutUs/Tomi/8.jpg', top: 155, left: 5,    focusX: 60, focusY: 0  },
-        { id: 13, size: 70, img: 'https://via.placeholder.com/70', top: 265, left: 0,       focusX: 60, focusY: 0  },
-        { id: 14, size: 70, img: 'https://via.placeholder.com/70', top: 260, left: 75,      focusX: 60, focusY: 0  },
+        { id: 13, size: 70, img: '', top: 265, left: 0,       focusX: 60, focusY: 0  },
+        { id: 14, size: 70, img: '', top: 260, left: 75,      focusX: 60, focusY: 0  },
         { id: 15, size: 80, img: 'assets/images/AboutUs/Tomi/9.jpg', top: 250, left: 150,   focusX: 60, focusY: 30  },
         { id: 16, size: 170, img: 'assets/images/AboutUs/Tomi/10.jpg', top: 235, left: 235, focusX: 60, focusY: 60  },
         { id: 17, size: 90, img: 'assets/images/AboutUs/Tomi/11.jpg', top: 200, left: 390,  focusX: 60, focusY: 20  },
@@ -225,26 +225,26 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 29, size: 90, img: 'assets/images/AboutUs/Tomi/23.jpg', top: 365, left: 495,  focusX: 40, focusY: 60  },
         { id: 30, size: 120, img: 'assets/images/AboutUs/Tomi/24.jpg', top: 415, left: 595, focusX: 40, focusY: 60  },
         { id: 31, size: 80, img: 'assets/images/AboutUs/Tomi/25.jpg', top: 500, left: 0,    focusX: 40, focusY: 60  },
-        { id: 32, size: 90, img: 'https://via.placeholder.com/90', top: 510, left: 85,      focusX: 40, focusY: 60  },
-        { id: 33, size: 90, img: 'https://via.placeholder.com/90', top: 585, left: 5,       focusX: 40, focusY: 60  },
-        { id: 34, size: 60, img: 'https://via.placeholder.com/60', top: 605, left: 100, focusX: 40, focusY: 60  },
+        { id: 32, size: 90, img: '', top: 510, left: 85,      focusX: 40, focusY: 60  },
+        { id: 33, size: 90, img: '', top: 585, left: 5,       focusX: 40, focusY: 60  },
+        { id: 34, size: 60, img: '', top: 605, left: 100, focusX: 40, focusY: 60  },
         { id: 35, size: 110, img: 'assets/images/AboutUs/Tomi/26.jpg', top: 510, left: 180, focusX: 40, focusY: 60  },
         { id: 36, size: 140, img: 'assets/images/AboutUs/Tomi/27.jpg', top: 560, left: 280, focusX: 40, focusY: 60  },
         { id: 37, size: 80, img: 'assets/images/AboutUs/Tomi/28.jpg', top: 500, left: 385, focusX: 40, focusY: 60  },
         { id: 38, size: 190, img: 'assets/images/AboutUs/Tomi/29.jpg', top: 595, left: 415, focusX: 40, focusY: 60  },
         { id: 39, size: 150, img: 'assets/images/AboutUs/Tomi/30.jpg', top: 540, left: 590, focusX: 40, focusY: 60  },
         { id: 40, size: 80, img: 'assets/images/AboutUs/Tomi/31.jpg', top: 700, left: 600, focusX: 40, focusY: 60  },
-        { id: 41, size: 60, img: 'https://via.placeholder.com/60', top: 685, left: 685, focusX: 40, focusY: 60  },
+        { id: 41, size: 60, img: '', top: 685, left: 685, focusX: 40, focusY: 60  },
         { id: 42, size: 110, img: 'assets/images/AboutUs/Tomi/32.jpeg', top: 680, left: 0, focusX: 40, focusY: 60  },
         { id: 43, size: 200, img: 'assets/images/AboutUs/Tomi/33.jpg', top: 640, left: 115, focusX: 40, focusY: 60  },
         { id: 44, size: 80, img: 'assets/images/AboutUs/Tomi/34.jpeg', top: 705, left: 320, focusX: 40, focusY: 60  },
-        { id: 45, size: 120, img: 'https://via.placeholder.com/120', top: 790, left: 35, focusX: 40, focusY: 60  },        
-        { id: 46, size: 60, img: 'https://via.placeholder.com/60', top: 840, left: 155, focusX: 40, focusY: 60  },
-        { id: 47, size: 70, img: 'https://via.placeholder.com/70', top: 830, left: 240, focusX: 40, focusY: 60  },
-        { id: 48, size: 70, img: 'https://via.placeholder.com/70', top: 790, left: 305, focusX: 40, focusY: 60  },
+        { id: 45, size: 120, img: '', top: 790, left: 35, focusX: 40, focusY: 60  },        
+        { id: 46, size: 60, img: '', top: 840, left: 155, focusX: 40, focusY: 60  },
+        { id: 47, size: 70, img: '', top: 830, left: 240, focusX: 40, focusY: 60  },
+        { id: 48, size: 70, img: '', top: 790, left: 305, focusX: 40, focusY: 60  },
         { id: 49, size: 90, img: 'assets/images/AboutUs/Tomi/35.jpg', top: 760, left: 380, focusX: 40, focusY: 60  },
-        { id: 50, size: 110, img: 'https://via.placeholder.com/110', top: 790, left: 470, focusX: 40, focusY: 60  },
-        { id: 51, size: 125, img: 'https://via.placeholder.com/70', top: 785, left: 590, focusX: 40, focusY: 60  }
+        { id: 50, size: 110, img: '', top: 790, left: 470, focusX: 40, focusY: 60  },
+        { id: 51, size: 125, img: '', top: 785, left: 590, focusX: 40, focusY: 60  }
         
     ];
 
@@ -344,6 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Function to update the right image
         const updateRightImage = () => {
             const currentRightBubble = rightBubbles[rightCurrentIndex];
+            rightImgElement.style.backgroundPosition = `${currentRightBubble.focusX}% ${currentRightBubble.focusY}%`;
             rightImgElement.src = currentRightBubble.img;
             rightCurrentIndex = (rightCurrentIndex + 1) % rightBubbles.length;
         };
