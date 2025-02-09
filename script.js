@@ -304,12 +304,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (screenWidth < 1350) {
         //ide kell a telós
-        usSection.style.flexDirection = "column";
-        usSection.style.justifyContent = "space-around";
-        rightBubbleContainer.style.height = "40vh";
-        rightBubbleContainer.style.width = "100vw";
-        leftBubbleContainer.style.height = "40vh";
-        leftBubbleContainer.style.width = "100vw";
+        if (screenWidth < 767){
+            usSection.style.flexDirection = "column";
+            usSection.style.justifyContent = "space-around";
+            rightBubbleContainer.style.height = "40vh";
+            rightBubbleContainer.style.width = "100vw";
+            leftBubbleContainer.style.height = "40vh";
+            leftBubbleContainer.style.width = "100vw";
+        }
+        else{
+            usSection.style.flexDirection = "row";
+            usSection.style.justifyContent = "space-around";
+            rightBubbleContainer.style.height = "100vh";
+            rightBubbleContainer.style.width = "40vw";
+            leftBubbleContainer.style.height = "100vh";
+            leftBubbleContainer.style.width = "40vw";
+        }
         headerUs.forEach((headerUs) => {
             headerUs.style.display = "none";
         });
@@ -350,8 +360,10 @@ document.addEventListener('DOMContentLoaded', () => {
         updateLeftImage();
     
         // Change images every 2 seconds
-        setInterval(updateRightImage, 3000);
-        setInterval(updateLeftImage, 3000);
+        setInterval(() => {
+            updateRightImage();
+            updateLeftImage();
+        }, 3000);
 
     } else {
         const getScreenMultiplier = () => {
