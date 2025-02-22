@@ -216,7 +216,7 @@ html{
 
 .downloadPng{
     display: flex;
-    justify-content: end;
+    justify-content: center;
     width: 75vw;
 }
 
@@ -759,9 +759,10 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
     width: 22vw;
     border-radius: 20px;
 }
+
 }
 
-@media only screen and (min-width: 1920px){
+@media only screen and (min-width: 1350px){
     #linkClose3{
         display: inline-block;
     }
