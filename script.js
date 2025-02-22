@@ -50,7 +50,7 @@ hamburgerButton.addEventListener('click', function () {
         navLinks.style.animation = 'slideDown 0.5s ease-in-out';
         navLinks.style.display = 'flex';
         //ide kerül a kinézete
-        navLinks.style.height = '34vh';
+        navLinks.style.height = '40vh';
         navLinks.style.position = 'fixed';
         navLinks.style.top = '0';
         navLinks.style.right = '0';
@@ -69,49 +69,23 @@ hamburgerButton.addEventListener('click', function () {
     }
 });
 
-linkClose1.addEventListener('click', function () {
-    // Close the menu with animation
+function closeMenu() {
     var isMobileDevice = window.matchMedia("(max-width: 1023px)").matches;
     if (isMobileDevice){
-    navLinks.style.animation = 'slideUp 0.5s ease-in-out';
-    hamburgerButton.style.display = 'inline';
-    setTimeout(() => {
-        navLinks.style.display = 'none';
-    }, 500);}
-});
+        navLinks.style.animation = 'slideUp 0.5s ease-in-out';
+        hamburgerButton.style.display = 'inline';
+        setTimeout(() => {
+            navLinks.style.display = 'none';
+        }, 500);
+    }
+}
 
-linkClose2.addEventListener('click', function () {
-    // Close the menu with animation
-    var isMobileDevice = window.matchMedia("(max-width: 1023px)").matches;
-    if (isMobileDevice){
-    navLinks.style.animation = 'slideUp 0.5s ease-in-out';
-    hamburgerButton.style.display = 'inline';
-    setTimeout(() => {
-        navLinks.style.display = 'none';
-    }, 500);}
-});
-
-linkClose3.addEventListener('click', function () {
-    // Close the menu with animation
-    var isMobileDevice = window.matchMedia("(max-width: 1023px)").matches;
-    if (isMobileDevice){
-    navLinks.style.animation = 'slideUp 0.5s ease-in-out';
-    hamburgerButton.style.display = 'inline';
-    setTimeout(() => {
-        navLinks.style.display = 'none';
-    }, 500);}
-});
-
-linkClose4.addEventListener('click', function () {
-    // Close the menu with animation
-    var isMobileDevice = window.matchMedia("(max-width: 1023px)").matches;
-    if (isMobileDevice){
-    navLinks.style.animation = 'slideUp 0.5s ease-in-out';
-    hamburgerButton.style.display = 'inline';
-    setTimeout(() => {
-        navLinks.style.display = 'none';
-    }, 500);}
-});
+linkClose1.addEventListener('click', closeMenu);
+linkClose2.addEventListener('click', closeMenu);
+linkClose3.addEventListener('click', closeMenu);
+linkClose4.addEventListener('click', closeMenu);
+linkClose5.addEventListener('click', closeMenu);
+linkClose6.addEventListener('click', closeMenu);
 
 document.addEventListener('click', function (event) {
 var isClickInside = navLinks.contains(event.target) || hamburgerButton.contains(event.target);
@@ -200,9 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 4, size: 80, img: 'assets/images/AboutUs/Tomi/4.jpg', top: 10, left: 230,     focusX: 40, focusY: 20, focusLapX: 50, focusLapY: 0   },
         { id: 5, size: 140, img: 'assets/images/AboutUs/Tomi/5.jpg', top: 70, left: 270,    focusX: 40, focusY: 60, focusLapX: 25, focusLapY: 0   },
         { id: 6, size: 100, img: 'assets/images/AboutUs/Tomi/6.jpg', top: 8, left: 440,     focusX: 0, focusY: 60, focusLapX: 20, focusLapY: 0   },
-        { id: 7, size: 60, img: 'assets/images/AboutUs/Tomi/7.jpg', top: 2, left: 540,        focusX: 0, focusY: 20, focusLapX: 0, focusLapY: 0   },
+        { id: 7, size: 60, img: 'assets/images/AboutUs/Tomi/7.jpg', top: 2, left: 540,        focusX: 0, focusY: 20, focusLapX: 0, focusLapY: 30   },//ezt
         { id: 8, size: 70, img: 'assets/images/AboutUs/Tomi/8.jpg', top: 110, left: 415,    focusX: 0, focusY: 0, focusLapX: 20, focusLapY: 0   },
-        { id: 9, size: 70, img: 'assets/images/AboutUs/Tomi/9.jpg', top: 170, left: 475,      focusX: 60, focusY: 0, focusLapX: 0, focusLapY: 0   },
+        { id: 9, size: 70, img: 'assets/images/AboutUs/Tomi/9.jpg', top: 170, left: 475,      focusX: 60, focusY: 0, focusLapX: 0, focusLapY: 30   },//ezt
         { id: 10, size: 60, img: 'assets/images/AboutUs/Tomi/10.jpg', top: 105, left: 490,     focusX: 0, focusY: 0, focusLapX: 20, focusLapY: 0   },
         { id: 11, size: 190, img: 'assets/images/AboutUs/Tomi/11.jpg', top: 45, left: 555,   focusX: 60, focusY: 60, focusLapX: 30, focusLapY: 0   },
         { id: 12, size: 110, img: 'assets/images/AboutUs/Tomi/12.jpg', top: 155, left: 5,    focusX: 50, focusY: 0, focusLapX: 0, focusLapY: 0   },
@@ -213,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 17, size: 90, img: 'assets/images/AboutUs/Tomi/17.jpg', top: 200, left: 390,  focusX: 60, focusY: 0, focusLapX: 0, focusLapY: 0   },
         { id: 18, size: 100, img: 'assets/images/AboutUs/Tomi/18.jpg', top: 295, left: 410, focusX: 90, focusY: 60, focusLapX: 50, focusLapY: 0   },
         { id: 19, size: 110, img: 'assets/images/AboutUs/Tomi/19.jpg', top: 230, left: 500, focusX: 40, focusY: 60, focusLapX: 30, focusLapY: 0   },
-        { id: 20, size: 90, img: 'assets/images/AboutUs/Tomi/20.jpg', top: 320, left: 580,  focusX: 40, focusY: 20, focusLapX: 0, focusLapY: 0   },
+        { id: 20, size: 90, img: 'assets/images/AboutUs/Tomi/20.jpg', top: 320, left: 580,  focusX: 40, focusY: 20, focusLapX: 0, focusLapY: 20   },//ezt
         { id: 21, size: 100, img: 'assets/images/AboutUs/Tomi/21.jpg', top: 235, left: 640, focusX: 0, focusY: 60, focusLapX: 20, focusLapY: 0   },
         { id: 22, size: 80, img: 'assets/images/AboutUs/Tomi/22.jpg', top: 340, left: 675,  focusX: 40, focusY: 60, focusLapX: 30, focusLapY: 0   },
         { id: 23, size: 70, img: 'assets/images/AboutUs/Tomi/23.jpg', top: 335, left: 25,   focusX: 40, focusY: 60, focusLapX: 40, focusLapY: 0   },
@@ -224,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 28, size: 130, img: 'assets/images/AboutUs/Tomi/28.jpg', top: 460, left: 470, focusX: 80, focusY: 60, focusLapX: 60, focusLapY: 0   },
         { id: 29, size: 90, img: 'assets/images/AboutUs/Tomi/29.jpg', top: 365, left: 495,  focusX: 60, focusY: 0, focusLapX: 60, focusLapY: 0   },
         { id: 30, size: 120, img: 'assets/images/AboutUs/Tomi/30.jpg', top: 415, left: 595, focusX: 40, focusY: 60, focusLapX: 40, focusLapY: 0   },
-        { id: 31, size: 80, img: 'assets/images/AboutUs/Tomi/31.jpg', top: 500, left: 0,    focusX: 40, focusY: 100, focusLapX: 50, focusLapY: 0   },
+        { id: 31, size: 80, img: 'assets/images/AboutUs/Tomi/31.jpg', top: 500, left: 0,    focusX: 40, focusY: 100, focusLapX: 50, focusLapY: 10   },//ezt
         { id: 32, size: 90, img: 'assets/images/AboutUs/Tomi/32.jpg', top: 510, left: 85,      focusX: 40, focusY: 60, focusLapX: 45, focusLapY: 0   },
         { id: 33, size: 90, img: 'assets/images/AboutUs/Tomi/33.jpg', top: 585, left: 5,       focusX: 40, focusY: 60, focusLapX: 50, focusLapY: 0   },
         { id: 34, size: 60, img: 'assets/images/AboutUs/Tomi/34.jpg', top: 605, left: 100, focusX: 40, focusY: 60, focusLapX: 40, focusLapY: 0   },
@@ -244,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 48, size: 70, img: 'assets/images/AboutUs/Tomi/48.jpg', top: 790, left: 305, focusX: 40, focusY: 60, focusLapX: 0, focusLapY: 0   },
         { id: 49, size: 90, img: 'assets/images/AboutUs/Tomi/49.jpeg', top: 760, left: 380, focusX: 75, focusY: 60, focusLapX: 60, focusLapY: 0   },
         { id: 50, size: 110, img: 'assets/images/AboutUs/Tomi/50.jpg', top: 790, left: 470, focusX: 80, focusY: 60, focusLapX: 60, focusLapY: 0   },
-        { id: 51, size: 125, img: 'assets/images/AboutUs/Tomi/51.jpg', top: 785, left: 590, focusX: 40, focusY: 10, focusLapX: 0, focusLapY: 0   }
+        { id: 51, size: 125, img: 'assets/images/AboutUs/Tomi/51.jpg', top: 785, left: 590, focusX: 40, focusY: 10, focusLapX: 0, focusLapY: 10   }
         
     ];
 
@@ -259,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 59, size: 70,     img: 'assets/images/AboutUs/Viki/8.jpg', top: 110, left: 415,   focusX: 0, focusY: 0, focusLapX: 15, focusLapY: 0   },
         { id: 60, size: 70,     img: 'assets/images/AboutUs/Viki/9.jpg', top: 170, left: 475,   focusX: 0, focusY: 0, focusLapX: 30, focusLapY: 0   },
         { id: 61, size: 60,     img: 'assets/images/AboutUs/Viki/10.jpg', top: 105, left: 490,  focusX: 0, focusY: 0, focusLapX: 0, focusLapY: 0   },
-        { id: 62, size: 190,    img: 'assets/images/AboutUs/Viki/11.jpg', top: 45, left: 555,   focusX: 0, focusY: 0, focusLapX: 0, focusLapY: 0   },
+        { id: 62, size: 190,    img: 'assets/images/AboutUs/Viki/11.jpg', top: 45, left: 555,   focusX: 0, focusY: 0, focusLapX: 0, focusLapY: 10   },//ezt
         { id: 63, size: 110,    img: 'assets/images/AboutUs/Viki/12.jpg', top: 155, left: 5,    focusX: 0, focusY: 0, focusLapX: 0, focusLapY: 0   },
         { id: 64, size: 70,     img: 'assets/images/AboutUs/Viki/13.jpg', top: 265, left: 2,    focusX: 20, focusY: 0, focusLapX: 30, focusLapY: 0   },
         { id: 65, size: 70,     img: 'assets/images/AboutUs/Viki/14.jpg', top: 260, left: 75,   focusX: 0, focusY: 0, focusLapX: 10, focusLapY: 0   },
@@ -284,9 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 84, size: 90,     img: 'assets/images/AboutUs/Viki/33.jpg', top: 585, left: 5,    focusX: 0, focusY: 0, focusLapX: 0, focusLapY: 0   },
         { id: 85, size: 60,     img: 'assets/images/AboutUs/Viki/34.jpg', top: 605, left: 100,  focusX: 100, focusY: 0, focusLapX: 80, focusLapY: 0   },
         { id: 86, size: 110,    img: 'assets/images/AboutUs/Viki/35.jpg', top: 510, left: 180,  focusX: 0, focusY: 0, focusLapX: 0, focusLapY: 0   },
-        { id: 87, size: 140,    img: 'assets/images/AboutUs/Viki/36.jpg', top: 560, left: 280,  focusX: 100, focusY: 0, focusLapX: 80, focusLapY: 0   },
+        { id: 87, size: 140,    img: 'assets/images/AboutUs/Viki/36.jpg', top: 560, left: 280,  focusX: 100, focusY: 0, focusLapX: 100, focusLapY: 0   },
         { id: 88, size: 80,     img: 'assets/images/AboutUs/Viki/37.jpg', top: 500, left: 385,  focusX: 50, focusY: 0, focusLapX: 50, focusLapY: 0   },
-        { id: 89, size: 190,    img: 'assets/images/AboutUs/Viki/38.jpg', top: 595, left: 415,  focusX: 0, focusY: 30, focusLapX: 0, focusLapY: 0   },
+        { id: 89, size: 190,    img: 'assets/images/AboutUs/Viki/38.jpg', top: 595, left: 415,  focusX: 0, focusY: 30, focusLapX: 0, focusLapY: 20   },//ezt
         { id: 90, size: 150,    img: 'assets/images/AboutUs/Viki/39.jpg', top: 540, left: 590,  focusX: 50, focusY: 0, focusLapX: 40, focusLapY: 0   },
         { id: 91, size: 80,     img: 'assets/images/AboutUs/Viki/40.jpg', top: 700, left: 600,  focusX: 0, focusY: 65, focusLapX: 0, focusLapY: 0   },
         { id: 92, size: 60,     img: 'assets/images/AboutUs/Viki/41.jpg', top: 685, left: 685,  focusX: 45, focusY: 0, focusLapX: 30, focusLapY: 0   },
@@ -299,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 99, size: 70,     img: 'assets/images/AboutUs/Viki/48.jpg', top: 790, left: 305,  focusX: 0, focusY: 0, focusLapX: 0, focusLapY: 0   },
         { id: 100, size: 90,    img: 'assets/images/AboutUs/Viki/49.jpg', top: 760, left: 380,  focusX: 0, focusY: 0, focusLapX: 0, focusLapY: 0   },
         { id: 101, size: 110,   img: 'assets/images/AboutUs/Viki/50.jpg', top: 790, left: 470,  focusX: 0, focusY: 20, focusLapX: 0, focusLapY: 0   },
-        { id: 102, size: 125,    img: 'assets/images/AboutUs/Viki/51.jpg', top: 785, left: 590, focusX: 0, focusY: 10, focusLapX: 0, focusLapY: 0   }
+        { id: 102, size: 125,    img: 'assets/images/AboutUs/Viki/51.jpg', top: 785, left: 590, focusX: 0, focusY: 10, focusLapX: 0, focusLapY: 10   }
     ];
 
     if (screenWidth < 1350) {

@@ -449,6 +449,13 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
         z-index: 999; /* Ensure it appears above other elements */
     }
 
+    #linkClose3{
+        display: none;
+    }
+    #linkClose4{
+        display: inline-block;
+    }
+
     .nav-container .links {
         display: none;
         animation: none;
@@ -555,6 +562,13 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
         z-index: 999; /* Ensure it appears above other elements */
     }
 
+    #linkClose3{
+        display: none;
+    }
+    #linkClose4{
+        display: inline-block;
+    }
+
     .nav-container .links {
         display: none;
         animation: none;
@@ -651,6 +665,14 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
     .nav-container .hamburger {
         display: none;
     }
+
+    #linkClose3{
+        display: none;
+    }
+    #linkClose4{
+        display: inline-block;
+    }
+
     .nav-container .links {
         display:inline;
     }
@@ -739,3 +761,11 @@ font-family: 'Diphylleia', Arial, Helvetica, sans-serif;
 }
 }
 
+@media only screen and (min-width: 1920px){
+    #linkClose3{
+        display: inline-block;
+    }
+    #linkClose4{
+        display: none;
+    }
+}
